@@ -175,6 +175,8 @@ p {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 1001;
+  position: relative;
 }
 
 .mobile-toggle:hover {
@@ -1010,7 +1012,7 @@ p {
   }
   
   .hero {
-    min-height: 56vh;
+    min-height: 64vh;
     padding: var(--space-8) 0;
   }
   
@@ -1078,7 +1080,7 @@ p {
   }
   
   .hero {
-    min-height: 56vh;
+    min-height: 64vh;
     padding: var(--space-6) 0;
   }
   
