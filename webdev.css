@@ -145,6 +145,7 @@ body{
   .nav-links.open a{display:block;padding:.9rem 1.5rem}
   .mobile-toggle{display:inline-block}
   .contact-form .grid{grid-template-columns:1fr}
+  .hero{padding:4rem 1.5rem 2rem}
   .hero-centered{gap:2rem}
   .hero-header{flex-direction:column;gap:1rem;text-align:center}
   .hero-header h1{margin-bottom:0}
@@ -152,5 +153,27 @@ body{
   .hero-content{max-width:100%}
   .social-links{gap:1.5rem}
   .social-link{padding:0.6rem 1rem;font-size:0.9rem}
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .image-container {
+    width: 250px;
+    height: 250px;
+  }
 }
 
