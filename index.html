@@ -313,7 +313,7 @@
                   <span class="tag">Chatbot</span>
                   <span class="tag">Real Estate</span>
                 </div>
-                <a href="#" class="portfolio-link" aria-label="View Real Estate AI Chatbot project">
+                <a href="https://altanyc-chatbot-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="View Real Estate AI Chatbot project">
                   <span class="material-icons">launch</span>
                 </a>
               </div>
@@ -324,14 +324,14 @@
           <div class="portfolio-image">
             <div class="portfolio-overlay">
               <div class="portfolio-content">
-                <h3>AI Blog Plugin (WordPress)</h3>
-                <p>Automated SEO blog generation with OpenAI</p>
+                <h3>AI Grader Plugin for LearnDash</h3>
+                <p>Automatic grading and feedback for quizzes and assignments</p>
                 <div class="portfolio-tags">
                   <span class="tag">WordPress</span>
+                  <span class="tag">LearnDash</span>
                   <span class="tag">AI</span>
-                  <span class="tag">SEO</span>
                 </div>
-                <a href="#" class="portfolio-link" aria-label="View AI Blog Plugin project">
+                <a href="#" class="portfolio-link open-video" data-video-url="https://www.youtube-nocookie.com/embed/M2qf86VZ6M8?autoplay=1&rel=0" aria-label="Play AI Grader Plugin for LearnDash video">
                   <span class="material-icons">launch</span>
                 </a>
               </div>
@@ -349,7 +349,7 @@
                   <span class="tag">Images</span>
                   <span class="tag">Branding</span>
                 </div>
-                <a href="#" class="portfolio-link" aria-label="View AI Image Generator project">
+                <a href="#" class="portfolio-link open-video" data-video-url="https://www.youtube-nocookie.com/embed/Qjrg85G62Ws?autoplay=1&rel=0" aria-label="Play AI Image Generator video">
                   <span class="material-icons">launch</span>
                 </a>
               </div>
@@ -378,14 +378,14 @@
           <div class="portfolio-image">
             <div class="portfolio-overlay">
               <div class="portfolio-content">
-                <h3>E-commerce AI Assistant</h3>
-                <p>Smart product recommendations and support</p>
+                <h3>AI Blog Writer WordPress Plugin</h3>
+                <p>for content creators, bloggers, and businesses</p>
                 <div class="portfolio-tags">
                   <span class="tag">WordPress</span>
-                  <span class="tag">E-commerce</span>
+                  <span class="tag">Plugin</span>
                   <span class="tag">AI</span>
                 </div>
-                <a href="#" class="portfolio-link" aria-label="View E-commerce AI Assistant project">
+                <a href="https://github.com/Temona007/AI-Blog-Writer-WordPress-Plugin" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="View AI Blog Writer WordPress Plugin project">
                   <span class="material-icons">launch</span>
                 </a>
               </div>
@@ -396,14 +396,14 @@
           <div class="portfolio-image">
             <div class="portfolio-overlay">
               <div class="portfolio-content">
-                <h3>API Integration Platform</h3>
-                <p>Seamless third-party service connections</p>
+                <h3>Podcast Name Generator</h3>
+                <p>generating podcast names using OpenAI API</p>
                 <div class="portfolio-tags">
+                  <span class="tag">OpenAI</span>
                   <span class="tag">API</span>
-                  <span class="tag">Integration</span>
-                  <span class="tag">Node.js</span>
+                  <span class="tag">Generator</span>
                 </div>
-                <a href="#" class="portfolio-link" aria-label="View API Integration Platform project">
+                <a href="https://podcastrocket.net/podcast-name-generator/" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="View Podcast Name Generator project">
                   <span class="material-icons">launch</span>
                 </a>
               </div>
@@ -413,6 +413,19 @@
       </div>
     </div>
   </section>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Video player">
+    <div class="video-backdrop" data-close="video"></div>
+    <div class="video-modal-content" role="document">
+      <button class="video-close" type="button" aria-label="Close video" data-close="video">
+        <span class="material-icons" aria-hidden="true">close</span>
+      </button>
+      <div class="video-wrapper">
+        <iframe id="videoIframe" src="" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- Testimonials Section -->
   <section class="testimonials" id="testimonials">
@@ -437,12 +450,14 @@
             <p>"Love working with Art - he is SO great and professional. Also has patience when I need better understanding."</p>
           </div>
           <div class="testimonial-author">
-            <div class="client-image">
-              <img src="https://www.upwork.com/profile-portraits/c1tj0CCH5n2-zcQUujsvczADxG9wIWGTeO3PLlsDg7gPHaUCgAeKzB2t4t93eidzey" alt="Jordan Gill" class="client-photo">
+            <div class="client-header">
+              <div class="client-image">
+                <img src="https://www.upwork.com/profile-portraits/c1tj0CCH5n2-zcQUujsvczADxG9wIWGTeO3PLlsDg7gPHaUCgAeKzB2t4t93eidzey" alt="Jordan Gill" class="client-photo">
+              </div>
+              <span class="client-name">Jordan Gill</span>
             </div>
             <div class="author-info">
               <h4>AI-powered SEO Image App</h4>
-              <span class="client-name">Jordan Gill</span>
               <span class="project-duration">Oct 24, 2024 - Feb 19, 2025</span>
             </div>
           </div>
@@ -459,12 +474,14 @@
             <p>"Wonderful work! So responsive and quick. Would absolutely work with again!"</p>
           </div>
           <div class="testimonial-author">
-            <div class="client-image">
-              <img src="https://www.upwork.com/profile-portraits/c1Jxp5-upYggtJ883w5TDwe3Ff8_tBhN4x1MpCATcDeqJNrxIFhpYXLXDwYj8bPFCN" alt="Dana Bakich" class="client-photo">
+            <div class="client-header">
+              <div class="client-image">
+                <img src="https://www.upwork.com/profile-portraits/c1Jxp5-upYggtJ883w5TDwe3Ff8_tBhN4x1MpCATcDeqJNrxIFhpYXLXDwYj8bPFCN" alt="Dana Bakich" class="client-photo">
+              </div>
+              <span class="client-name">Dana Bakich</span>
             </div>
             <div class="author-info">
               <h4>AI Interactive Holiday Card</h4>
-              <span class="client-name">Dana Bakich</span>
               <span class="project-duration">Dec 13, 2024 - Dec 27, 2024</span>
             </div>
           </div>
@@ -481,12 +498,14 @@
             <p>"Exceptional developer with deep understanding of AI integration. Delivered exactly what we needed on time."</p>
           </div>
           <div class="testimonial-author">
-            <div class="client-image">
-              <img src="https://www.upwork.com/profile-portraits/c1bzqRKH20UFi7izn6Ltq-D5y7cNHTLcAAUShK66WGvhzMg7OH666T6-TGfor6YJB8" alt="David Lee" class="client-photo">
+            <div class="client-header">
+              <div class="client-image">
+                <img src="https://www.upwork.com/profile-portraits/c1bzqRKH20UFi7izn6Ltq-D5y7cNHTLcAAUShK66WGvhzMg7OH666T6-TGfor6YJB8" alt="David Lee" class="client-photo">
+              </div>
+              <span class="client-name">David Lee</span>
             </div>
             <div class="author-info">
               <h4>AI Marking Plugin for LearnDash</h4>
-              <span class="client-name">David Lee</span>
               <span class="project-duration">Mar 19, 2025 - Jun 25, 2025</span>
             </div>
           </div>
@@ -503,12 +522,14 @@
             <p>"Great work. Will seek him out again when in need of a professional developer."</p>
           </div>
           <div class="testimonial-author">
-            <div class="client-image">
-              <img src="Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo">
+            <div class="client-header">
+              <div class="client-image">
+                <img src="Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo">
+              </div>
+              <span class="client-name">Leonard Friedrich</span>
             </div>
             <div class="author-info">
               <h4>Fullstack dev for simple AI wordpress name generator</h4>
-              <span class="client-name">Leonard Friedrich</span>
               <span class="project-duration">Jan 9, 2024 - May 7, 2024</span>
             </div>
           </div>
@@ -536,7 +557,7 @@
               <span class="material-icons">email</span>
               <div>
                 <h4>Email</h4>
-                <p>temonaupw@gmail.com</p>
+                <p><a href="mailto:temonaupw@gmail.com">temonaupw@gmail.com</a></p>
               </div>
             </div>
             <div class="contact-method">
@@ -566,7 +587,7 @@
             </a>
           </div>
         </div>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! I will contact you within 24 hours.');" role="form" aria-label="Contact form">
+        <form id="contactForm" class="contact-form" role="form" aria-label="Contact form">
           <div class="form-group">
             <input type="text" placeholder="Your Name" required aria-label="Your name" name="name">
           </div>
@@ -579,7 +600,8 @@
           <div class="form-group">
             <textarea rows="5" placeholder="Project Description" required aria-label="Project description" name="description"></textarea>
           </div>
-          <button class="btn btn-primary" type="submit" aria-label="Send message to Art R.">
+          <div id="contactStatus" aria-live="polite" style="margin-bottom: 12px; color: var(--text-light);"></div>
+          <button class="btn btn-primary" type="submit" aria-label="Send message to Art R." id="contactSubmit">
             <span class="material-icons">send</span>
             Send Message
           </button>
@@ -696,6 +718,92 @@
         mobileToggle.setAttribute('aria-expanded', 'false');
         mobileToggle.innerHTML = '<span class="material-icons">menu</span>';
         document.body.style.overflow = '';
+      }
+    });
+
+    // Contact form → Google Apps Script (no backend required)
+    const contactFormEl = document.getElementById('contactForm');
+    const contactStatusEl = document.getElementById('contactStatus');
+    const contactSubmitEl = document.getElementById('contactSubmit');
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRw2A_9oEUV_MJ2peltu9-ETtXASzvwzNgOJuR-ji4J32Qjr4kqenYN6Zfpq6qST9j/exec'; // replace after deploying
+
+    if (contactFormEl) {
+      contactFormEl.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('YOUR_GOOGLE')) {
+          alert('Please configure the Google Apps Script URL first.');
+          return;
+        }
+
+        const formData = new FormData(contactFormEl);
+        const payload = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          projectType: formData.get('project-type'),
+          message: formData.get('description'),
+          page: window.location.href,
+        };
+
+        contactStatusEl.textContent = 'Sending...';
+        contactSubmitEl.disabled = true;
+
+        try {
+          const res = await fetch(APPS_SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            mode: 'no-cors'
+          });
+          // no-cors prevents reading response; assume success
+          contactStatusEl.textContent = 'Thanks! Your message was sent.';
+          contactFormEl.reset();
+        } catch (err) {
+          contactStatusEl.textContent = 'Sorry, something went wrong. Please email temonaupw@gmail.com.';
+        } finally {
+          contactSubmitEl.disabled = false;
+        }
+      });
+    }
+
+    // Video modal logic
+    const videoModal = document.getElementById('videoModal');
+    const videoIframe = document.getElementById('videoIframe');
+    const openVideoLinks = document.querySelectorAll('.open-video');
+
+    function openVideo(url) {
+      if (!videoModal || !videoIframe) return;
+      videoIframe.src = url;
+      videoModal.classList.add('open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+      if (!videoModal || !videoIframe) return;
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      // Stop playback by resetting src
+      videoIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    openVideoLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = link.getAttribute('data-video-url');
+        if (url) openVideo(url);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.getAttribute('data-close') === 'video') {
+        closeVideo();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal && videoModal.classList.contains('open')) {
+        closeVideo();
       }
     });
   </script>

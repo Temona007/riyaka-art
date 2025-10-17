@@ -733,8 +733,14 @@ p {
 
 .testimonial-author {
   display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.client-header {
+  display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .client-image {
@@ -755,27 +761,28 @@ p {
   transform: scale(1.1);
 }
 
+.client-name {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
 .author-info {
-  flex: 1;
+  width: 100%;
 }
 
 .testimonial-author h4 {
   color: var(--text);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
   font-size: var(--font-size-base);
-}
-
-.client-name {
-  display: block;
-  color: var(--primary);
   font-weight: 600;
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-1);
 }
 
 .project-duration {
   color: var(--text-light);
   font-size: var(--font-size-sm);
+  margin-top: auto;
 }
 
 /* Contact Section */
@@ -965,6 +972,71 @@ p {
   margin-bottom: 0;
 }
 
+/* Video Modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.video-modal.open {
+  display: flex;
+}
+
+.video-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.video-modal-content {
+  position: relative;
+  background: #000;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 960px;
+  width: 92%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.video-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius-full);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.video-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.video-wrapper, #videoIframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .video-modal-content {
+    width: 96%;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 1024px) {
   .hero-content {
@@ -1047,13 +1119,19 @@ p {
   
   .testimonial-author {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     gap: var(--space-3);
   }
-  
+
+  .client-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
   .client-photo {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
   
   .portfolio-filter {
