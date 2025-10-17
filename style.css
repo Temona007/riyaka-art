@@ -319,6 +319,326 @@ p {
   transform: scale(1.15);
 }
 
+/* Upwork Badges */
+.upwork-badges {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-4);
+  z-index: 10;
+}
+
+/* Hero additions */
+.hero-subtitle {
+  color: var(--text-light);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-lg);
+}
+
+.hero-extras {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.btn.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn.btn-ghost:hover {
+  background: var(--bg-light);
+  box-shadow: var(--shadow);
+}
+
+/* YouTube-styled button */
+.btn.btn-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: #ff0000;
+  color: #ffffff;
+  border: 1px solid #ff0000;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25);
+}
+
+.btn.btn-youtube:hover {
+  background: #e50000;
+  border-color: #e50000;
+  box-shadow: 0 10px 24px rgba(255, 0, 0, 0.35);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.link-cta {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-cta:hover {
+  text-decoration: underline;
+}
+
+/* Process section */
+.process {
+  padding: var(--space-16) 0;
+  background: var(--bg-light);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.process-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+}
+
+.process-step {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-3);
+  color: var(--primary);
+}
+
+.process-step .material-icons {
+  font-size: 36px;
+}
+
+/* Calculator section */
+.calculator {
+  padding: var(--space-16) 0;
+}
+
+.calc-form {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(6px);
+}
+
+.calc-form {
+  position: relative;
+}
+
+.calc-form:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(20,168,0,0.06), rgba(58,134,255,0.06));
+  pointer-events: none;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.calc-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.calc-field select {
+  width: 100%;
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.chip:hover {
+  background: #eef6ee;
+  border-color: #d6ead6;
+}
+
+.chip input {
+  accent-color: var(--primary);
+}
+
+.calc-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.calc-result {
+  margin-top: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-result .range {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.calc-cta .btn-primary {
+  border-radius: 9999px;
+}
+
+@media (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-extras {
+    justify-content: center;
+  }
+  .hero-ctas {
+    justify-content: center;
+  }
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.upwork-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--bg);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 180px;
+}
+
+.upwork-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.job-success-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.badge-circle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+  fill: none;
+  stroke: #e2e8f0;
+  stroke-width: 2;
+}
+
+.progress-circle-fg {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.badge-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.badge-percentage {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--text);
+}
+
+.badge-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.top-rated-badge .badge-icon {
+  position: static;
+  width: 32px;
+  height: 32px;
+}
+
+.top-rated-badge .badge-label {
+  font-size: var(--font-size-sm);
+  color: var(--text);
+  font-weight: 600;
+}
+
 .floating-elements {
   position: absolute;
   top: 0;
@@ -688,6 +1008,12 @@ p {
 .testimonials {
   padding: var(--space-20) 0;
   background: var(--bg-light);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .testimonials-grid {
@@ -761,11 +1087,23 @@ p {
   transform: scale(1.1);
 }
 
+.client-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .client-name {
   color: var(--primary);
   font-weight: 600;
   font-size: var(--font-size-base);
   margin: 0;
+}
+
+.client-location {
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
 }
 
 .author-info {
@@ -777,6 +1115,113 @@ p {
   margin-bottom: var(--space-2);
   font-size: var(--font-size-base);
   font-weight: 600;
+}
+
+/* Company Logos Section */
+.company-logos {
+  margin-top: var(--space-16);
+  padding: var(--space-8) 0;
+  background: linear-gradient(135deg, #14a800, #0f8a00);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.company-logos .section-title {
+  color: white;
+  text-align: center;
+}
+
+.logos-slider {
+  overflow: hidden;
+  margin-top: var(--space-8);
+  position: relative;
+}
+
+.logos-track {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  gap: var(--space-8);
+}
+
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 80px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.1);
+}
+
+.company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover .company-logo {
+  transform: scale(1.15);
+}
+
+.logo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: transparent;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+  min-height: 80px;
+  width: 100%;
+  justify-content: center;
+}
+
+.logo-placeholder:hover {
+  border-color: var(--primary);
+  background: rgba(20, 168, 0, 0.05);
+}
+
+.logo-placeholder .material-icons {
+  font-size: var(--font-size-2xl);
+  color: var(--text-light);
+}
+
+.logo-placeholder span:last-child {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .project-duration {
@@ -810,6 +1255,10 @@ p {
 
 .contact-methods {
   margin-bottom: var(--space-8);
+}
+
+.contact-cta {
+  margin-top: var(--space-6);
 }
 
 .contact-method {
@@ -1095,6 +1544,43 @@ p {
   .image-container {
     width: 300px;
     height: 300px;
+  }
+  
+  .upwork-badges {
+    bottom: -50px;
+    gap: var(--space-2);
+  }
+  
+  .upwork-badge {
+    padding: var(--space-2) var(--space-3);
+    min-width: 150px;
+  }
+  
+  .badge-circle {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .badge-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .top-rated-badge .badge-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .badge-percentage {
+    font-size: var(--font-size-xs);
+  }
+  
+  .badge-label {
+    font-size: 0.65rem;
+  }
+  
+  .top-rated-badge .badge-label {
+    font-size: var(--font-size-xs);
   }
   
   .floating-card {
