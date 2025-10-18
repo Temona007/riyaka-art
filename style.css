@@ -127,6 +127,32 @@ p {
   font-size: var(--font-size-xl);
 }
 
+.verified-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  vertical-align: middle;
+  --icon-color: #0066cc;
+  --icon-color-bg: #ffffff;
+}
+
+.verified-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero section verification badge - larger size */
+.hero .verified-badge {
+  width: 40px;
+  height: 40px;
+  top: -8px;
+    left: -18px;
+}
+
 .logo-dot {
   width: 12px;
   height: 12px;
@@ -317,6 +343,38 @@ p {
 
 .profile-image:hover {
   transform: scale(1.15);
+}
+
+/* Status indicator */
+.air3-presence-indicator {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.air3-presence-indicator-online {
+  background-color: #14a800;
+  top: 43px;
+  left: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Upwork Badges */
