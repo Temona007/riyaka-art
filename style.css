@@ -1282,6 +1282,97 @@ p {
   margin-bottom: 0;
 }
 
+.testimonial-text {
+  position: relative;
+}
+
+.testimonial-text.truncated {
+  max-height: 3.6em; /* Approximately 108 characters worth of height */
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-text.truncated::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.2em;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  padding: var(--space-1) 0;
+  margin-top: var(--space-2);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  color: var(--primary-dark);
+}
+
+.read-more-btn-icon {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-3);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(20, 168, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.read-more-btn-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.read-more-btn-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 168, 0, 0.4);
+}
+
+.read-more-btn-icon:hover::before {
+  left: 100%;
+}
+
+.read-more-btn-icon .material-icons {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn-icon.expanded .material-icons {
+  transform: rotate(180deg);
+}
+
+.read-more-btn-icon .word-count {
+  font-size: var(--font-size-xs);
+  opacity: 0.9;
+}
+
 .project-title {
   font-size: 12px;
   font-weight: 600;
