@@ -2154,13 +2154,18 @@ span.top-badge {
   .sticky-call-btn {
     bottom: 20px;
     right: 20px;
-    width: 50px;
-    height: 50px;
+    padding: 10px 16px;
+    font-size: 13px;
+    gap: 6px;
   }
   
   .call-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .call-text {
+    font-size: 13px;
   }
 }
 
