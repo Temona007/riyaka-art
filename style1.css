@@ -1927,6 +1927,33 @@ span.top-badge {
   }
 }
 
+/* Upwork Links */
+.upwork-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.upwork-link:hover {
+  color: #14a800;
+  text-decoration-color: #14a800;
+  text-decoration-thickness: 2px;
+}
+
+/* Upwork Badge Links */
+.upwork-badge {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.upwork-badge:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Sticky Call Button */
 .sticky-call-btn {
   position: fixed;
@@ -2229,4 +2256,18 @@ span.top-badge {
   .stat-number {
     font-size: var(--font-size-2xl);
   }
+}
+
+/* Brand logo image */
+.brand-logo {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: cover;
+  /* box-shadow: 0 0 12px rgba(20, 168, 0, 0.35); */
+}
+
+.footer .brand .brand-logo {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
