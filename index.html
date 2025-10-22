@@ -1147,6 +1147,69 @@
     <span class="call-text">Book a call</span>
   </a>
 
+  <!-- Chatbot Widget -->
+  <div class="chatbot-widget">
+    <!-- Chat Icon -->
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="chat-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+      </svg>
+      <span class="chat-notification" id="chatNotification" style="display: none;">1</span>
+    </button>
+
+    <!-- Chat Modal -->
+    <div class="chatbot-modal" id="chatbotModal">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+          </svg>
+        </div>
+        <div class="chatbot-info">
+          <h3>AI Assistant</h3>
+          <p>Ask me anything about AI development!</p>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">
+          <div class="message-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+          </div>
+          <div class="message-content">
+            <p>Hello! I'm your AI assistant. How can I help you with AI development, web applications, or WordPress solutions today?</p>
+            <span class="message-time">Just now</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="chatbot-typing" id="chatbotTyping" style="display: none;">
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="typing-text">AI is typing...</span>
+      </div>
+      
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Type your message..." maxlength="500">
+        <button id="chatbotSend" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Mobile menu toggle
     const mobileToggle = document.getElementById('mobileToggle');
@@ -1481,6 +1544,215 @@
     
     // Initialize active link on page load
     updateActiveNavLink();
+
+    // Chatbot functionality
+    class Chatbot {
+      constructor() {
+        this.isOpen = false;
+        this.threadId = null;
+        this.assistantId = 'asst_aFu6oqUDW0xmHflIZPgjVuZc';
+        this.netlifyFunctionUrl = '/.netlify/functions/chatbot';
+        
+        this.init();
+      }
+
+      init() {
+        this.toggle = document.getElementById('chatbotToggle');
+        this.modal = document.getElementById('chatbotModal');
+        this.close = document.getElementById('chatbotClose');
+        this.messages = document.getElementById('chatbotMessages');
+        this.input = document.getElementById('chatbotInput');
+        this.send = document.getElementById('chatbotSend');
+        this.typing = document.getElementById('chatbotTyping');
+        this.notification = document.getElementById('chatNotification');
+
+        this.toggle.addEventListener('click', () => this.toggleChat());
+        this.close.addEventListener('click', () => this.closeChat());
+        this.send.addEventListener('click', () => this.sendMessage());
+        this.input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') this.sendMessage();
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+          if (!this.modal.contains(e.target) && !this.toggle.contains(e.target) && this.isOpen) {
+            this.closeChat();
+          }
+        });
+      }
+
+      toggleChat() {
+        if (this.isOpen) {
+          this.closeChat();
+        } else {
+          this.openChat();
+        }
+      }
+
+      openChat() {
+        this.isOpen = true;
+        this.modal.classList.add('open');
+        this.notification.style.display = 'none';
+        this.input.focus();
+      }
+
+      closeChat() {
+        this.isOpen = false;
+        this.modal.classList.remove('open');
+      }
+
+      async sendMessage() {
+        const message = this.input.value.trim();
+        if (!message) return;
+
+        // Add user message to chat
+        this.addMessage(message, 'user');
+        this.input.value = '';
+        this.send.disabled = true;
+
+        // Show typing indicator
+        this.showTyping();
+
+        try {
+          // Create thread if it doesn't exist
+          if (!this.threadId) {
+            const threadResponse = await this.callNetlifyFunction('createThread');
+            this.threadId = threadResponse.id;
+          }
+
+          // Add message to thread
+          await this.callNetlifyFunction('addMessage', {
+            threadId: this.threadId,
+            message: message
+          });
+
+          // Run assistant
+          const runResponse = await this.callNetlifyFunction('runAssistant', {
+            threadId: this.threadId
+          });
+
+          // Poll for completion
+          const completedRun = await this.pollRunStatus(runResponse.id);
+
+          // Get assistant messages
+          const messagesResponse = await this.callNetlifyFunction('getMessages', {
+            threadId: this.threadId
+          });
+
+          // Hide typing and show response
+          this.hideTyping();
+          const lastMessage = messagesResponse.data[messagesResponse.data.length - 1];
+          this.addMessage(lastMessage.content[0].text.value, 'bot');
+
+        } catch (error) {
+          console.error('Chatbot error:', error);
+          this.hideTyping();
+          this.addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+        } finally {
+          this.send.disabled = false;
+        }
+      }
+
+      async callNetlifyFunction(action, data = {}) {
+        const response = await fetch(this.netlifyFunctionUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            action: action,
+            data: data
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to call Netlify function');
+        }
+
+        return await response.json();
+      }
+
+      async pollRunStatus(runId) {
+        const maxAttempts = 30;
+        let attempts = 0;
+
+        while (attempts < maxAttempts) {
+          const run = await this.callNetlifyFunction('checkRunStatus', {
+            threadId: this.threadId,
+            runId: runId
+          });
+
+          if (run.status === 'completed') {
+            return run;
+          } else if (run.status === 'failed') {
+            throw new Error('Assistant run failed');
+          }
+
+          // Wait 1 second before checking again
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          attempts++;
+        }
+
+        throw new Error('Assistant run timed out');
+      }
+
+      addMessage(content, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        
+        if (sender === 'bot') {
+          avatar.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+          `;
+        } else {
+          avatar.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+          `;
+        }
+
+        const messageContent = document.createElement('div');
+        messageContent.className = 'message-content';
+        messageContent.innerHTML = `
+          <p>${this.escapeHtml(content)}</p>
+          <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+        `;
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        this.messages.appendChild(messageDiv);
+
+        // Scroll to bottom
+        this.messages.scrollTop = this.messages.scrollHeight;
+      }
+
+      showTyping() {
+        this.typing.style.display = 'flex';
+        this.messages.scrollTop = this.messages.scrollHeight;
+      }
+
+      hideTyping() {
+        this.typing.style.display = 'none';
+      }
+
+      escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+    }
+
+    // Initialize chatbot when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new Chatbot();
+    });
   </script>
 </body>
 </html>
