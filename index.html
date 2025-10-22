@@ -1626,10 +1626,27 @@
             message: message
           });
 
-          // Run assistant
-          const runResponse = await this.callNetlifyFunction('runAssistant', {
-            threadId: this.threadId
-          });
+          // Run assistant with retry logic for server errors
+          let runResponse;
+          let retryCount = 0;
+          const maxRetries = 2;
+
+          while (retryCount <= maxRetries) {
+            try {
+              runResponse = await this.callNetlifyFunction('runAssistant', {
+                threadId: this.threadId
+              });
+              break; // Success, exit retry loop
+            } catch (retryError) {
+              if (retryError.message.includes('server_error') && retryCount < maxRetries) {
+                retryCount++;
+                console.log(`Retrying assistant run (attempt ${retryCount + 1}/${maxRetries + 1})`);
+                await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds before retry
+                continue;
+              }
+              throw retryError; // Re-throw if not a server error or max retries reached
+            }
+          }
 
           // Poll for completion
           const completedRun = await this.pollRunStatus(runResponse.id);
@@ -1654,7 +1671,11 @@
           } else if (error.message.includes('Failed to create thread')) {
             errorMessage = 'Unable to start conversation. Please try again.';
           } else if (error.message.includes('Assistant run failed')) {
-            errorMessage = 'AI assistant is temporarily unavailable. Please try again.';
+            if (error.message.includes('server_error') || error.message.includes('Sorry, something went wrong')) {
+              errorMessage = 'The AI service is experiencing technical difficulties. Please try again in a moment, or contact me directly at temonaupw@gmail.com';
+            } else {
+              errorMessage = 'AI assistant is temporarily unavailable. Please try again.';
+            }
           } else if (error.message.includes('timed out')) {
             errorMessage = 'The AI is taking longer than expected. Please try again with a shorter message.';
           } else if (error.message.includes('expired')) {
@@ -1662,10 +1683,19 @@
           }
           
           // Add a fallback response for common questions
-          if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
-            errorMessage = 'Hi! I\'m having some technical difficulties right now. You can reach me directly at temonaupw@gmail.com or book a call at https://calendly.com/temona007/intro-call';
-          } else if (message.toLowerCase().includes('price') || message.toLowerCase().includes('cost')) {
-            errorMessage = 'I\'d be happy to discuss pricing! Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
+          const lowerMessage = message.toLowerCase();
+          if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+            errorMessage = 'Hi! 👋 I\'m having some technical difficulties right now, but I\'d love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call';
+          } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
+            errorMessage = 'I\'d be happy to discuss pricing! 💰 Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
+          } else if (lowerMessage.includes('ai') || lowerMessage.includes('chatbot') || lowerMessage.includes('automation')) {
+            errorMessage = 'I specialize in AI chatbots and automation! 🤖 Let\'s discuss your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
+          } else if (lowerMessage.includes('website') || lowerMessage.includes('web app') || lowerMessage.includes('wordpress')) {
+            errorMessage = 'I build custom websites and web applications! 🌐 Let\'s talk about your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
+          } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
+            errorMessage = 'You can reach me at:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
+          } else {
+            errorMessage = 'I\'m experiencing technical difficulties, but I\'d love to help you! Please reach out directly:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call';
           }
           
           this.addMessage(errorMessage, 'bot');
