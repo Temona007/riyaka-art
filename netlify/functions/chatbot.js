@@ -154,32 +154,42 @@ async function addMessage(baseUrl, apiKey, threadId, message) {
 }
 
 async function runAssistant(baseUrl, apiKey, threadId, assistantId) {
-  const response = await fetch(`${baseUrl}/threads/${threadId}/runs`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'OpenAI-Beta': 'assistants=v2'
-    },
-    body: JSON.stringify({
-      assistant_id: assistantId
-    })
-  });
+  try {
+    console.log('Running assistant:', assistantId, 'for thread:', threadId);
+    
+    const response = await fetch(`${baseUrl}/threads/${threadId}/runs`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'OpenAI-Beta': 'assistants=v2'
+      },
+      body: JSON.stringify({
+        assistant_id: assistantId
+      })
+    });
 
-  if (!response.ok) {
-    throw new Error(`Failed to run assistant: ${response.statusText}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI run assistant error:', response.status, errorText);
+      throw new Error(`Failed to run assistant: ${response.status} ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('Assistant run started:', data.id, 'Status:', data.status);
+    
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+  } catch (error) {
+    console.error('runAssistant error:', error);
+    throw error;
   }
-
-  const data = await response.json();
-  
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
 }
 
 async function getMessages(baseUrl, apiKey, threadId) {

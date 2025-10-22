@@ -1655,6 +1655,17 @@
             errorMessage = 'Unable to start conversation. Please try again.';
           } else if (error.message.includes('Assistant run failed')) {
             errorMessage = 'AI assistant is temporarily unavailable. Please try again.';
+          } else if (error.message.includes('timed out')) {
+            errorMessage = 'The AI is taking longer than expected. Please try again with a shorter message.';
+          } else if (error.message.includes('expired')) {
+            errorMessage = 'The conversation session expired. Please try again.';
+          }
+          
+          // Add a fallback response for common questions
+          if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+            errorMessage = 'Hi! I\'m having some technical difficulties right now. You can reach me directly at temonaupw@gmail.com or book a call at https://calendly.com/temona007/intro-call';
+          } else if (message.toLowerCase().includes('price') || message.toLowerCase().includes('cost')) {
+            errorMessage = 'I\'d be happy to discuss pricing! Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
           }
           
           this.addMessage(errorMessage, 'bot');
@@ -1696,7 +1707,7 @@
       }
 
       async pollRunStatus(runId) {
-        const maxAttempts = 30;
+        const maxAttempts = 60; // Increased from 30 to 60 seconds
         let attempts = 0;
 
         while (attempts < maxAttempts) {
@@ -1705,10 +1716,21 @@
             runId: runId
           });
 
+          console.log('Run status:', run.status, 'Attempt:', attempts + 1);
+
           if (run.status === 'completed') {
             return run;
           } else if (run.status === 'failed') {
-            throw new Error('Assistant run failed');
+            console.error('Assistant run failed:', run);
+            // Check if there's a last_error for more details
+            if (run.last_error) {
+              throw new Error(`Assistant run failed: ${run.last_error.message || 'Unknown error'}`);
+            }
+            throw new Error('Assistant run failed - please try again');
+          } else if (run.status === 'cancelled') {
+            throw new Error('Assistant run was cancelled');
+          } else if (run.status === 'expired') {
+            throw new Error('Assistant run expired - please try again');
           }
 
           // Wait 1 second before checking again
@@ -1716,7 +1738,7 @@
           attempts++;
         }
 
-        throw new Error('Assistant run timed out');
+        throw new Error('Assistant run timed out after 60 seconds - please try again');
       }
 
       addMessage(content, sender) {
