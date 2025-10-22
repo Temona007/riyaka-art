@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
   try {
     const { action, data } = JSON.parse(event.body);
     const apiKey = process.env.OPENAI_API_KEY;
-    const assistantId = process.env.OPENAI_ASSISTANT_ID || 'YOUR_ASSISTANT_ID';
+    const assistantId = 'asst_aFu6oqUDW0xmHflIZPgjVuZc';
 
     if (!apiKey) {
       return {
@@ -71,41 +71,56 @@ exports.handler = async (event, context) => {
     }
   } catch (error) {
     console.error('Chatbot function error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      event: event.body
+    });
     return {
       statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ error: 'Internal server error' })
+      body: JSON.stringify({ 
+        error: 'Internal server error',
+        details: error.message 
+      })
     };
   }
 };
 
 async function createThread(baseUrl, apiKey) {
-  const response = await fetch(`${baseUrl}/threads`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'OpenAI-Beta': 'assistants=v2'
+  try {
+    const response = await fetch(`${baseUrl}/threads`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'OpenAI-Beta': 'assistants=v2'
+      }
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI API error:', response.status, errorText);
+      throw new Error(`Failed to create thread: ${response.status} ${errorText}`);
     }
-  });
 
-  if (!response.ok) {
-    throw new Error(`Failed to create thread: ${response.statusText}`);
+    const data = await response.json();
+    
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+  } catch (error) {
+    console.error('createThread error:', error);
+    throw error;
   }
-
-  const data = await response.json();
-  
-  return {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
 }
 
 async function addMessage(baseUrl, apiKey, threadId, message) {
