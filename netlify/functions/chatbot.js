@@ -172,6 +172,13 @@ async function runAssistant(baseUrl, apiKey, threadId, assistantId) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('OpenAI run assistant error:', response.status, errorText);
+      
+      // If assistant fails, try to use direct chat completion as fallback
+      if (response.status >= 500) {
+        console.log('Assistant failed, trying direct chat completion fallback...');
+        return await runDirectChat(baseUrl, apiKey, threadId);
+      }
+      
       throw new Error(`Failed to run assistant: ${response.status} ${errorText}`);
     }
 
@@ -188,8 +195,107 @@ async function runAssistant(baseUrl, apiKey, threadId, assistantId) {
     };
   } catch (error) {
     console.error('runAssistant error:', error);
-    throw error;
+    
+    // Try direct chat completion as fallback
+    try {
+      console.log('Trying direct chat completion fallback...');
+      return await runDirectChat(baseUrl, apiKey, threadId);
+    } catch (fallbackError) {
+      console.error('Fallback also failed:', fallbackError);
+      throw error; // Throw original error
+    }
   }
+}
+
+async function runDirectChat(baseUrl, apiKey, threadId) {
+  // Get the last user message
+  const messagesResponse = await fetch(`${baseUrl}/threads/${threadId}/messages`, {
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'OpenAI-Beta': 'assistants=v2'
+    }
+  });
+
+  if (!messagesResponse.ok) {
+    throw new Error('Failed to get messages for fallback');
+  }
+
+  const messagesData = await messagesResponse.json();
+  const lastUserMessage = messagesData.data.find(msg => msg.role === 'user');
+  
+  if (!lastUserMessage) {
+    throw new Error('No user message found for fallback');
+  }
+
+  // Use direct chat completion
+  const chatResponse = await fetch(`${baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are Art R., a helpful AI assistant for web development and AI services. Be friendly and professional. Help users with questions about AI chatbots, web apps, and WordPress development. Guide them to contact Art for projects at temonaupw@gmail.com or https://calendly.com/temona007/intro-call'
+        },
+        {
+          role: 'user',
+          content: lastUserMessage.content[0].text.value
+        }
+      ],
+      max_tokens: 500,
+      temperature: 0.7
+    })
+  });
+
+  if (!chatResponse.ok) {
+    const errorText = await chatResponse.text();
+    throw new Error(`Direct chat failed: ${chatResponse.status} ${errorText}`);
+  }
+
+  const chatData = await chatResponse.json();
+  const assistantMessage = chatData.choices[0].message.content;
+
+  // Add the assistant's response to the thread
+  await fetch(`${baseUrl}/threads/${threadId}/messages`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'OpenAI-Beta': 'assistants=v2'
+    },
+    body: JSON.stringify({
+      role: 'assistant',
+      content: assistantMessage
+    })
+  });
+
+  // Return a mock run object that's already completed
+  return {
+    statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: 'fallback_run_' + Date.now(),
+      status: 'completed',
+      object: 'thread.run',
+      created_at: Math.floor(Date.now() / 1000),
+      assistant_id: 'fallback',
+      thread_id: threadId,
+      type: 'assistant.run',
+      model: 'gpt-4o-mini',
+      instructions: 'Fallback direct chat completion',
+      tools: [],
+      tool_resources: {},
+      metadata: {},
+      usage: chatData.usage
+    })
+  };
 }
 
 async function getMessages(baseUrl, apiKey, threadId) {
