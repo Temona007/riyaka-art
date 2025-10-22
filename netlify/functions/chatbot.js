@@ -59,6 +59,9 @@ exports.handler = async (event, context) => {
       case 'checkRunStatus':
         return await checkRunStatus(baseUrl, apiKey, data.threadId, data.runId);
       
+      case 'runDirectChat':
+        return await runDirectChat(baseUrl, apiKey, data.threadId, data.message);
+      
       default:
         return {
           statusCode: 400,

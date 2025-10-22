@@ -1752,6 +1752,13 @@
             return run;
           } else if (run.status === 'failed') {
             console.error('Assistant run failed:', run);
+            
+            // If the run failed with server error, try fallback
+            if (run.last_error?.code === 'server_error' || run.last_error?.message?.includes('Sorry, something went wrong')) {
+              console.log('Assistant failed with server error, trying fallback...');
+              return await this.tryFallbackResponse();
+            }
+            
             // Check if there's a last_error for more details
             if (run.last_error) {
               throw new Error(`Assistant run failed: ${run.last_error.message || 'Unknown error'}`);
@@ -1768,7 +1775,40 @@
           attempts++;
         }
 
-        throw new Error('Assistant run timed out after 60 seconds - please try again');
+        // If we get here, it timed out - try fallback
+        console.log('Assistant timed out, trying fallback...');
+        return await this.tryFallbackResponse();
+      }
+
+      async tryFallbackResponse() {
+        try {
+          console.log('Attempting fallback response...');
+          
+          // Get the last user message from the thread
+          const messagesResponse = await this.callNetlifyFunction('getMessages', {
+            threadId: this.threadId
+          });
+          
+          const lastUserMessage = messagesResponse.data.find(msg => msg.role === 'user');
+          if (!lastUserMessage) {
+            throw new Error('No user message found for fallback');
+          }
+          
+          const userMessage = lastUserMessage.content[0].text.value;
+          
+          // Use the fallback system in the Netlify function
+          const fallbackResponse = await this.callNetlifyFunction('runDirectChat', {
+            threadId: this.threadId,
+            message: userMessage
+          });
+          
+          console.log('Fallback response successful');
+          return fallbackResponse;
+          
+        } catch (error) {
+          console.error('Fallback also failed:', error);
+          throw error;
+        }
       }
 
       addMessage(content, sender) {
