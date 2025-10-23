@@ -1664,45 +1664,10 @@
         } catch (error) {
           console.error('Chatbot error:', error);
           this.hideTyping();
-          let errorMessage = 'Sorry, I encountered an error. Please try again.';
           
-          if (error.message.includes('API key not configured')) {
-            errorMessage = 'Chatbot is not properly configured. Please contact support.';
-          } else if (error.message.includes('Failed to create thread')) {
-            errorMessage = 'Unable to start conversation. Please try again.';
-          } else if (error.message.includes('Assistant run failed')) {
-            if (error.message.includes('server_error') || error.message.includes('Sorry, something went wrong')) {
-              errorMessage = 'The AI service is experiencing technical difficulties. Please try again in a moment, or contact me directly at temonaupw@gmail.com';
-            } else {
-              errorMessage = 'AI assistant is temporarily unavailable. Please try again.';
-            }
-          } else if (error.message.includes('timed out')) {
-            errorMessage = 'The AI is taking longer than expected. Please try again with a shorter message.';
-          } else if (error.message.includes('expired')) {
-            errorMessage = 'The conversation session expired. Please try again.';
-          }
-          
-          // Add a fallback response for common questions
-          const lowerMessage = message.toLowerCase();
-          
-          // Check if it's a quota issue
-          if (error.message.includes('insufficient_quota') || error.message.includes('quota')) {
-            errorMessage = 'I\'m temporarily experiencing high demand, but I\'d love to help you directly! 💬\n\n📧 Email: temonaupw@gmail.com\n📞 Book a free call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
-          } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-            errorMessage = 'Hi! 👋 I\'m having some technical difficulties right now, but I\'d love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call';
-          } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
-            errorMessage = 'I\'d be happy to discuss pricing! 💰 Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
-          } else if (lowerMessage.includes('ai') || lowerMessage.includes('chatbot') || lowerMessage.includes('automation')) {
-            errorMessage = 'I specialize in AI chatbots and automation! 🤖 Let\'s discuss your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
-          } else if (lowerMessage.includes('website') || lowerMessage.includes('web app') || lowerMessage.includes('wordpress')) {
-            errorMessage = 'I build custom websites and web applications! 🌐 Let\'s talk about your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
-          } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
-            errorMessage = 'You can reach me at:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
-          } else {
-            errorMessage = 'I\'m experiencing technical difficulties, but I\'d love to help you! Please reach out directly:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call';
-          }
-          
-          this.addMessage(errorMessage, 'bot');
+          // Use local fallback response
+          const fallbackMessage = this.getLocalFallbackResponse(message);
+          this.addMessage(fallbackMessage, 'bot');
         } finally {
           this.send.disabled = false;
         }
@@ -1786,36 +1751,88 @@
         return await this.tryFallbackResponse();
       }
 
-      async tryFallbackResponse() {
-        try {
-          console.log('Attempting fallback response...');
-          
-          // Get the last user message from the thread
-          const messagesResponse = await this.callNetlifyFunction('getMessages', {
-            threadId: this.threadId
-          });
-          
-          const lastUserMessage = messagesResponse.data.find(msg => msg.role === 'user');
-          if (!lastUserMessage) {
-            throw new Error('No user message found for fallback');
+        async tryFallbackResponse() {
+          try {
+            console.log('Attempting fallback response...');
+            
+            // Get the last user message from the thread
+            const messagesResponse = await this.callNetlifyFunction('getMessages', {
+              threadId: this.threadId
+            });
+            
+            const lastUserMessage = messagesResponse.data.find(msg => msg.role === 'user');
+            if (!lastUserMessage) {
+              throw new Error('No user message found for fallback');
+            }
+            
+            const userMessage = lastUserMessage.content[0].text.value;
+            
+            // Try the Netlify function fallback first
+            try {
+              const fallbackResponse = await this.callNetlifyFunction('runDirectChat', {
+                threadId: this.threadId,
+                message: userMessage
+              });
+              
+              console.log('Netlify fallback response successful');
+              return fallbackResponse;
+            } catch (netlifyError) {
+              console.log('Netlify fallback failed, using local fallback:', netlifyError.message);
+              
+              // Use local fallback responses
+              const fallbackMessage = this.getLocalFallbackResponse(userMessage);
+              
+              // Add the fallback response to the thread
+              await this.callNetlifyFunction('addMessage', {
+                threadId: this.threadId,
+                message: fallbackMessage,
+                role: 'assistant'
+              });
+              
+              // Return a mock completed run
+              return {
+                id: 'local_fallback_' + Date.now(),
+                status: 'completed',
+                object: 'thread.run',
+                created_at: Math.floor(Date.now() / 1000),
+                assistant_id: 'local_fallback',
+                thread_id: this.threadId,
+                type: 'assistant.run',
+                model: 'local_fallback',
+                instructions: 'Local fallback response',
+                tools: [],
+                tool_resources: {},
+                metadata: {},
+                usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
+              };
+            }
+            
+          } catch (error) {
+            console.error('All fallbacks failed:', error);
+            throw error;
           }
-          
-          const userMessage = lastUserMessage.content[0].text.value;
-          
-          // Use the fallback system in the Netlify function
-          const fallbackResponse = await this.callNetlifyFunction('runDirectChat', {
-            threadId: this.threadId,
-            message: userMessage
-          });
-          
-          console.log('Fallback response successful');
-          return fallbackResponse;
-          
-        } catch (error) {
-          console.error('Fallback also failed:', error);
-          throw error;
         }
-      }
+
+        getLocalFallbackResponse(message) {
+          const lowerMessage = message.toLowerCase();
+          
+          // Check if it's a quota issue
+          if (message.includes('insufficient_quota') || message.includes('quota')) {
+            return 'I\'m temporarily experiencing high demand, but I\'d love to help you directly! 💬\n\n📧 Email: temonaupw@gmail.com\n📞 Book a free call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
+          } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+            return 'Hi! 👋 I\'m having some technical difficulties right now, but I\'d love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call';
+          } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
+            return 'I\'d be happy to discuss pricing! 💰 Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
+          } else if (lowerMessage.includes('ai') || lowerMessage.includes('chatbot') || lowerMessage.includes('automation')) {
+            return 'I specialize in AI chatbots and automation! 🤖 Let\'s discuss your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
+          } else if (lowerMessage.includes('website') || lowerMessage.includes('web app') || lowerMessage.includes('wordpress')) {
+            return 'I build custom websites and web applications! 🌐 Let\'s talk about your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
+          } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
+            return 'You can reach me at:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
+          } else {
+            return 'I\'m experiencing technical difficulties, but I\'d love to help you! Please reach out directly:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call';
+          }
+        }
 
       addMessage(content, sender) {
         const messageDiv = document.createElement('div');

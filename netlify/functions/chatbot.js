@@ -57,7 +57,7 @@ exports.handler = async (event, context) => {
         return await createThread(baseUrl, apiKey);
       
       case 'addMessage':
-        return await addMessage(baseUrl, apiKey, data.threadId, data.message);
+        return await addMessage(baseUrl, apiKey, data.threadId, data.message, data.role);
       
       case 'runAssistant':
         return await runAssistant(baseUrl, apiKey, data.threadId, assistantId);
@@ -135,7 +135,7 @@ async function createThread(baseUrl, apiKey) {
   }
 }
 
-async function addMessage(baseUrl, apiKey, threadId, message) {
+async function addMessage(baseUrl, apiKey, threadId, message, role = 'user') {
   const response = await fetch(`${baseUrl}/threads/${threadId}/messages`, {
     method: 'POST',
     headers: {
@@ -144,7 +144,7 @@ async function addMessage(baseUrl, apiKey, threadId, message) {
       'OpenAI-Beta': 'assistants=v2'
     },
     body: JSON.stringify({
-      role: 'user',
+      role: role,
       content: message
     })
   });
