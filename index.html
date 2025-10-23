@@ -1684,7 +1684,11 @@
           
           // Add a fallback response for common questions
           const lowerMessage = message.toLowerCase();
-          if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+          
+          // Check if it's a quota issue
+          if (error.message.includes('insufficient_quota') || error.message.includes('quota')) {
+            errorMessage = 'I\'m temporarily experiencing high demand, but I\'d love to help you directly! 💬\n\n📧 Email: temonaupw@gmail.com\n📞 Book a free call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
+          } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
             errorMessage = 'Hi! 👋 I\'m having some technical difficulties right now, but I\'d love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call';
           } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
             errorMessage = 'I\'d be happy to discuss pricing! 💰 Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
@@ -1706,7 +1710,8 @@
 
       async callNetlifyFunction(action, data = {}) {
         try {
-          console.log('Calling Netlify function:', action, data);
+          console.log('🔗 Calling Netlify function:', action, data);
+          console.log('🔗 Function URL:', this.netlifyFunctionUrl);
           
           const response = await fetch(this.netlifyFunctionUrl, {
             method: 'POST',
@@ -1719,19 +1724,20 @@
             })
           });
 
-          console.log('Response status:', response.status);
+          console.log('📡 Response status:', response.status);
+          console.log('📡 Response headers:', Object.fromEntries(response.headers.entries()));
 
           if (!response.ok) {
             const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-            console.error('Netlify function error:', errorData);
+            console.error('❌ Netlify function error:', errorData);
             throw new Error(errorData.error || `HTTP ${response.status}: Failed to call Netlify function`);
           }
 
           const result = await response.json();
-          console.log('Netlify function success:', result);
+          console.log('✅ Netlify function success:', result);
           return result;
         } catch (error) {
-          console.error('callNetlifyFunction error:', error);
+          console.error('❌ callNetlifyFunction error:', error);
           throw error;
         }
       }

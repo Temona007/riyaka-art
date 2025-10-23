@@ -30,7 +30,16 @@ exports.handler = async (event, context) => {
     const apiKey = process.env.OPENAI_API_KEY;
     const assistantId = 'asst_aFu6oqUDW0xmHflIZPgjVuZc';
 
+    // Enhanced debugging
+    console.log('=== CHATBOT FUNCTION DEBUG ===');
+    console.log('Action:', action);
+    console.log('Data:', JSON.stringify(data, null, 2));
+    console.log('API Key exists:', !!apiKey);
+    console.log('API Key length:', apiKey ? apiKey.length : 0);
+    console.log('Assistant ID:', assistantId);
+
     if (!apiKey) {
+      console.error('❌ OpenAI API key not configured in environment variables');
       return {
         statusCode: 500,
         headers: {
@@ -256,6 +265,13 @@ async function runDirectChat(baseUrl, apiKey, threadId) {
 
   if (!chatResponse.ok) {
     const errorText = await chatResponse.text();
+    console.error('Direct chat failed:', chatResponse.status, errorText);
+    
+    // If it's a quota error, return a specific error message
+    if (chatResponse.status === 429 && errorText.includes('insufficient_quota')) {
+      throw new Error('insufficient_quota');
+    }
+    
     throw new Error(`Direct chat failed: ${chatResponse.status} ${errorText}`);
   }
 

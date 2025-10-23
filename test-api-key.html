@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI API Key Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .loading {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔑 OpenAI API Key Test</h1>
+        <p>This tool helps you test your OpenAI API key and diagnose issues.</p>
+
+        <div class="test-section info">
+            <h3>📋 Instructions</h3>
+            <ol>
+                <li>Enter your OpenAI API key below</li>
+                <li>Click "Test API Key" to check if it's valid</li>
+                <li>Click "Test Chat Completion" to test the chat endpoint</li>
+                <li>Click "Test Assistant" to test your specific assistant</li>
+            </ol>
+        </div>
+
+        <div class="input-group">
+            <label for="apiKey">OpenAI API Key:</label>
+            <input type="password" id="apiKey" placeholder="sk-..." />
+        </div>
+
+        <div class="input-group">
+            <label for="assistantId">Assistant ID (optional):</label>
+            <input type="text" id="assistantId" value="asst_aFu6oqUDW0xmHflIZPgjVuZc" />
+        </div>
+
+        <div class="input-group">
+            <label for="testMessage">Test Message:</label>
+            <textarea id="testMessage" placeholder="Hello, how are you?">Hello, how are you?</textarea>
+        </div>
+
+        <div>
+            <button onclick="testApiKey()">🔑 Test API Key</button>
+            <button onclick="testChatCompletion()">💬 Test Chat Completion</button>
+            <button onclick="testAssistant()">🤖 Test Assistant</button>
+            <button onclick="clearResults()">🗑️ Clear Results</button>
+        </div>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://api.openai.com/v1';
+        
+        function addResult(title, content, type = 'info') {
+            const results = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-section ${type}`;
+            resultDiv.innerHTML = `
+                <h3>${title}</h3>
+                <div class="result">${content}</div>
+            `;
+            results.appendChild(resultDiv);
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        async function testApiKey() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            if (!apiKey) {
+                addResult('❌ Error', 'Please enter your API key', 'error');
+                return;
+            }
+
+            addResult('🔑 Testing API Key...', 'Checking if API key is valid...', 'info');
+
+            try {
+                const response = await fetch(`${API_BASE}/models`, {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('✅ API Key Valid', `Success! Found ${data.data.length} models available.`, 'success');
+                } else {
+                    const errorData = await response.text();
+                    addResult('❌ API Key Invalid', `Error ${response.status}: ${errorData}`, 'error');
+                }
+            } catch (error) {
+                addResult('❌ Network Error', `Failed to connect: ${error.message}`, 'error');
+            }
+        }
+
+        async function testChatCompletion() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const message = document.getElementById('testMessage').value.trim();
+            
+            if (!apiKey) {
+                addResult('❌ Error', 'Please enter your API key', 'error');
+                return;
+            }
+
+            addResult('💬 Testing Chat Completion...', 'Sending test message...', 'info');
+
+            try {
+                const response = await fetch(`${API_BASE}/chat/completions`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [
+                            { role: 'user', content: message }
+                        ],
+                        max_tokens: 100
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const reply = data.choices[0].message.content;
+                    addResult('✅ Chat Completion Success', `Response: ${reply}`, 'success');
+                } else {
+                    const errorData = await response.text();
+                    addResult('❌ Chat Completion Failed', `Error ${response.status}: ${errorData}`, 'error');
+                }
+            } catch (error) {
+                addResult('❌ Network Error', `Failed to connect: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAssistant() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const assistantId = document.getElementById('assistantId').value.trim();
+            const message = document.getElementById('testMessage').value.trim();
+            
+            if (!apiKey) {
+                addResult('❌ Error', 'Please enter your API key', 'error');
+                return;
+            }
+
+            if (!assistantId) {
+                addResult('❌ Error', 'Please enter your Assistant ID', 'error');
+                return;
+            }
+
+            addResult('🤖 Testing Assistant...', 'Creating thread and sending message...', 'info');
+
+            try {
+                // Step 1: Create a thread
+                const threadResponse = await fetch(`${API_BASE}/threads`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json',
+                        'OpenAI-Beta': 'assistants=v2'
+                    },
+                    body: JSON.stringify({})
+                });
+
+                if (!threadResponse.ok) {
+                    const errorData = await threadResponse.text();
+                    addResult('❌ Thread Creation Failed', `Error ${threadResponse.status}: ${errorData}`, 'error');
+                    return;
+                }
+
+                const threadData = await threadResponse.json();
+                const threadId = threadData.id;
+                addResult('✅ Thread Created', `Thread ID: ${threadId}`, 'success');
+
+                // Step 2: Add message to thread
+                const messageResponse = await fetch(`${API_BASE}/threads/${threadId}/messages`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json',
+                        'OpenAI-Beta': 'assistants=v2'
+                    },
+                    body: JSON.stringify({
+                        role: 'user',
+                        content: message
+                    })
+                });
+
+                if (!messageResponse.ok) {
+                    const errorData = await messageResponse.text();
+                    addResult('❌ Message Creation Failed', `Error ${messageResponse.status}: ${errorData}`, 'error');
+                    return;
+                }
+
+                addResult('✅ Message Added', 'Message added to thread successfully', 'success');
+
+                // Step 3: Run assistant
+                const runResponse = await fetch(`${API_BASE}/threads/${threadId}/runs`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json',
+                        'OpenAI-Beta': 'assistants=v2'
+                    },
+                    body: JSON.stringify({
+                        assistant_id: assistantId
+                    })
+                });
+
+                if (!runResponse.ok) {
+                    const errorData = await runResponse.text();
+                    addResult('❌ Assistant Run Failed', `Error ${runResponse.status}: ${errorData}`, 'error');
+                    return;
+                }
+
+                const runData = await runResponse.json();
+                const runId = runData.id;
+                addResult('✅ Assistant Run Started', `Run ID: ${runId}`, 'success');
+
+                // Step 4: Poll for completion
+                addResult('⏳ Polling for Response...', 'Waiting for assistant to respond...', 'info');
+                
+                let attempts = 0;
+                const maxAttempts = 10;
+                
+                while (attempts < maxAttempts) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    attempts++;
+                    
+                    const statusResponse = await fetch(`${API_BASE}/threads/${threadId}/runs/${runId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${apiKey}`,
+                            'OpenAI-Beta': 'assistants=v2'
+                        }
+                    });
+
+                    if (!statusResponse.ok) {
+                        const errorData = await statusResponse.text();
+                        addResult('❌ Status Check Failed', `Error ${statusResponse.status}: ${errorData}`, 'error');
+                        return;
+                    }
+
+                    const statusData = await statusResponse.json();
+                    
+                    if (statusData.status === 'completed') {
+                        // Get the response message
+                        const messagesResponse = await fetch(`${API_BASE}/threads/${threadId}/messages`, {
+                            headers: {
+                                'Authorization': `Bearer ${apiKey}`,
+                                'OpenAI-Beta': 'assistants=v2'
+                            }
+                        });
+
+                        if (messagesResponse.ok) {
+                            const messagesData = await messagesResponse.json();
+                            const assistantMessage = messagesData.data.find(msg => msg.role === 'assistant');
+                            if (assistantMessage) {
+                                addResult('✅ Assistant Response Received', `Response: ${assistantMessage.content[0].text.value}`, 'success');
+                            } else {
+                                addResult('⚠️ No Assistant Response', 'Assistant completed but no response found', 'info');
+                            }
+                        }
+                        return;
+                    } else if (statusData.status === 'failed') {
+                        addResult('❌ Assistant Run Failed', `Error: ${JSON.stringify(statusData.last_error, null, 2)}`, 'error');
+                        return;
+                    } else {
+                        addResult('⏳ Still Processing...', `Status: ${statusData.status} (Attempt ${attempts}/${maxAttempts})`, 'info');
+                    }
+                }
+
+                addResult('⏰ Timeout', 'Assistant took too long to respond', 'error');
+
+            } catch (error) {
+                addResult('❌ Network Error', `Failed to connect: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-focus on API key input
+        document.getElementById('apiKey').focus();
+    </script>
+</body>
+</html>
