@@ -1642,14 +1642,20 @@
 
         } catch (error) {
           console.error('Chatbot error:', error);
+          console.error('Error details:', {
+            message: error.message,
+            stack: error.stack
+          });
           this.hideTyping();
-          this.addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+          this.addMessage(`Sorry, I encountered an error: ${error.message}. Please try again.`, 'bot');
         } finally {
           this.send.disabled = false;
         }
       }
 
       async callNetlifyFunction(action, data = {}) {
+        console.log(`🔧 Calling Netlify function: ${action}`, data);
+        
         const response = await fetch(this.netlifyFunctionUrl, {
           method: 'POST',
           headers: {
@@ -1661,12 +1667,17 @@
           })
         });
 
+        console.log(`📡 Netlify function response status: ${response.status}`);
+
         if (!response.ok) {
           const errorData = await response.json();
+          console.error('❌ Netlify function error:', errorData);
           throw new Error(errorData.error || 'Failed to call Netlify function');
         }
 
-        return await response.json();
+        const result = await response.json();
+        console.log(`✅ Netlify function success:`, result);
+        return result;
       }
 
       async pollRunStatus(runId) {
