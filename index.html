@@ -1640,14 +1640,15 @@
           console.log('📝 Messages response:', messagesResponse);
           console.log('📝 Messages data:', messagesResponse.data);
           
-          const lastMessage = messagesResponse.data[messagesResponse.data.length - 1];
-          console.log('📝 Last message:', lastMessage);
-          console.log('📝 Last message content:', lastMessage.content);
+          // Find the assistant's message (not the user's message)
+          const assistantMessage = messagesResponse.data.find(msg => msg.role === 'assistant');
+          console.log('📝 Assistant message:', assistantMessage);
           
-          if (lastMessage && lastMessage.content && lastMessage.content[0] && lastMessage.content[0].text) {
-            this.addMessage(lastMessage.content[0].text.value, 'bot');
+          if (assistantMessage && assistantMessage.content && assistantMessage.content[0] && assistantMessage.content[0].text) {
+            console.log('📝 Assistant message content:', assistantMessage.content[0].text.value);
+            this.addMessage(assistantMessage.content[0].text.value, 'bot');
           } else {
-            console.error('❌ Invalid message structure:', lastMessage);
+            console.error('❌ No assistant message found or invalid structure:', assistantMessage);
             this.addMessage('Sorry, I received an invalid response format. Please try again.', 'bot');
           }
 
