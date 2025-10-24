@@ -75,82 +75,10 @@
     }
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Art R. Development",
-    "url": "https://artr.dev/",
-    "logo": "https://artr.dev/riyaka-logo.png",
-    "sameAs": [
-      "https://www.linkedin.com/in/art-r/",
-      "https://www.upwork.com/freelancers/~01efeb701886987874",
-      "https://github.com/Temona007"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "About",
-        "url": "https://artr.dev/#about"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "url": "https://artr.dev/#services"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Portfolio",
-        "url": "https://artr.dev/#portfolio"
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Testimonials",
-        "url": "https://artr.dev/#testimonials"
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "Contact",
-        "url": "https://artr.dev/#contact"
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AI Chatbot & RAG Development",
-    "provider": {
-      "@type": "Person",
-      "name": "Art R."
-    },
-    "areaServed": "Worldwide",
-    "serviceType": "AI Development",
-    "url": "https://artr.dev/#services",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://artr.dev/#contact"
-    }
-  }
-  </script>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style/style.css">
+  <link rel="stylesheet" href="style.css">
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JZ1JMRWPX"></script>
@@ -165,11 +93,18 @@
   <!-- Navigation -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-        <a class="brand" href="index.html" aria-label="Art R. - Home">
-          <img src="assets/images/riyaka-logo.png" alt="Riyaka logo" class="brand-logo" width="28" height="28" loading="lazy">
-          <span class="brand-name">Art R.</span>
+      <a class="brand" href="index.html" aria-label="Art R. - Home">
+        <span class="logo-dot"></span>
+        <span class="brand-name">Art R.</span>
+        <span class="verified-badge" title="Verified Identity">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img">
+            <path fill="#0066cc" fill-rule="evenodd" vector-effect="non-scaling-stroke" stroke="#0066cc" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M20.4 13.1c.8 1 .3 2.5-.9 2.9-.8.2-1.3 1-1.3 1.8 0 1.3-1.2 2.2-2.5 1.8-.8-.3-1.7 0-2.1.7-.7 1.1-2.3 1.1-3 0-.5-.7-1.3-1-2.1-.7-1.4.4-2.6-.6-2.6-1.8 0-.8-.5-1.6-1.3-1.8-1.2-.4-1.7-1.8-.9-2.9.5-.7.5-1.6 0-2.2-.9-1-.4-2.5.9-2.9.8-.2 1.3-1 1.3-1.8C5.9 5 7.1 4 8.3 4.5c.8.3 1.7 0 2.1-.7.7-1.1 2.3-1.1 3 0 .5.7 1.3 1 2.1.7 1.4-.5 2.6.5 2.6 1.7 0 .8.5 1.6 1.3 1.8 1.2.4 1.7 1.8.9 2.9-.4.6-.4 1.6.1 2.2z" clip-rule="evenodd"></path>
+            <path vector-effect="non-scaling-stroke" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M15.5 9.7L11 14.3l-2.5-2.5"></path>
+          </svg>
+        </span>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" aria-label="Go to homepage">Home</a></li>
         <li><a href="#about" aria-label="Learn more about Art R.">About</a></li>
         <li><a href="#services" aria-label="View services">Services</a></li>
         <li><a href="#portfolio" aria-label="View portfolio" class="active">Portfolio</a></li>
@@ -189,38 +124,33 @@
         <div class="hero-text">
           <h1 class="hero-title">
             <span class="greeting">Hello, I'm</span>
-            <span class="name">Art R.
-              <span class="verified-badge" title="Verified Identity">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" role="img">
-                  <path fill="var(--icon-color, #001e00)" fill-rule="evenodd" vector-effect="non-scaling-stroke" stroke="var(--icon-color, #001e00)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M20.4 13.1c.8 1 .3 2.5-.9 2.9-.8.2-1.3 1-1.3 1.8 0 1.3-1.2 2.2-2.5 1.8-.8-.3-1.7 0-2.1.7-.7 1.1-2.3 1.1-3 0-.5-.7-1.3-1-2.1-.7-1.4.4-2.6-.6-2.6-1.8 0-.8-.5-1.6-1.3-1.8-1.2-.4-1.7-1.8-.9-2.9.5-.7.5-1.6 0-2.2-.9-1-.4-2.5.9-2.9.8-.2 1.3-1 1.3-1.8C5.9 5 7.1 4 8.3 4.5c.8.3 1.7 0 2.1-.7.7-1.1 2.3-1.1 3 0 .5.7 1.3 1 2.1.7 1.4-.5 2.6.5 2.6 1.7 0 .8.5 1.6 1.3 1.8 1.2.4 1.7 1.8.9 2.9-.4.6-.4 1.6.1 2.2z" clip-rule="evenodd"></path>
-                  <path vector-effect="non-scaling-stroke" stroke="var(--icon-color-bg, #fff)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M15.5 9.7L11 14.3l-2.5-2.5"></path>
-                </svg>
-              </span>
-            </span>
-            <span class="title">Building Web & AI Products That Drive Results</span>
+            <span class="name">Art R.</span>
+            <span class="title">AI Web App & WordPress Plugin Developer</span>
           </h1>
           <p class="hero-description">
-            I help founders and teams create custom AI assistants, Web Apps, and WordPress AI Tools that automate workflows and grow businesses faster.
+            I create custom AI assistants, real-time web apps, and WordPress tools that help businesses grow faster and automate smarter.
+            <br/>
+            <br/>
+            Let’s Build Something Intelligent
           </p>
           <div class="hero-buttons">
-            <a href="https://calendly.com/temona007/intro-call" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Book a call with me on Calendly">
-              <span class="material-icons">event</span>
-              Book a Free AI Strategy Call
-            </a>
             <a href="#" class="btn btn-youtube open-video" data-video-url="https://www.youtube-nocookie.com/embed/Je0-GTOBj9k?autoplay=1&rel=0" aria-label="Watch intro video on YouTube">
               <span class="material-icons">play_circle_filled</span>
               Watch Intro Video
+            </a>
+            <a href="https://calendly.com/temona007/intro-call" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Book a call with me on Calendly">
+              <span class="material-icons">event</span>
+              Book a Free AI Strategy Call
             </a>
           </div>
         </div>
         <div class="hero-image">
           <div class="image-container">
-            <img src="assets/images/small.jpg" alt="Art R. - Professional Web Developer and AI Specialist" class="profile-image" width="400" height="400">
-            <span aria-label="Status: Online" role="img" class="air3-presence-indicator air3-presence-indicator-online"><span class="sr-only">Status: Online</span></span>
+            <img src="small.jpg" alt="Art R. - Professional Web Developer and AI Specialist" class="profile-image" width="400" height="400">
             
             <!-- Upwork Badges -->
             <div class="upwork-badges">
-              <a href="https://www.upwork.com/freelancers/~01efeb701886987874" target="_blank" rel="noopener noreferrer" class="upwork-badge job-success-badge" aria-label="View Art R.'s Upwork profile">
+              <div class="upwork-badge job-success-badge">
                 <div class="badge-circle">
                   <svg aria-hidden="true" viewBox="0 0 40 40" class="progress-circle-svg">
                     <circle cx="20" cy="20" r="19" class="progress-circle-bg"></circle>
@@ -236,9 +166,9 @@
                   <span class="badge-percentage">100%</span>
                   <span class="badge-label">Job Success</span>
                 </div>
-              </a>
+              </div>
               
-              <a href="https://www.upwork.com/freelancers/~01efeb701886987874" target="_blank" rel="noopener noreferrer" class="upwork-badge top-rated-badge" aria-label="View Art R.'s Upwork profile">
+              <div class="upwork-badge top-rated-badge">
                 <div class="badge-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 28 28" role="img">
                     <path fill="#F66DBC" d="M12 1.155a4 4 0 014 0l8.124 4.69a4 4 0 012 3.464v9.382a4 4 0 01-2 3.464L16 26.845a4 4 0 01-4 0l-8.124-4.69a4 4 0 01-2-3.464V9.309a4 4 0 012-3.464L12 1.155z"></path>
@@ -246,7 +176,7 @@
                   </svg>
                 </div>
                 <span class="badge-label">Top Rated Plus</span>
-              </a>
+              </div>
             </div>
             
             <div class="floating-elements">
@@ -274,8 +204,8 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">About Me</span>
-        <h2 class="section-title">Your Technical Partner for AI-Driven Growth</h2>
-        <p class="section-description">I Turn Your Business Problems into Automated Solutions</p>
+        <h2 class="section-title">Passionate Developer. AI Enthusiast. Problem Solver.</h2>
+        <p class="section-description">Love creating innovative solutions</p>
       </div>
       <div class="about-stats-simplified">
         <div class="stat-item">
@@ -284,7 +214,7 @@
         </div>
         <div class="stat-item">
           <div class="stat-number">1,552</div>
-          <div class="stat-label">Tracked Hours on <a href="https://www.upwork.com/freelancers/~01efeb701886987874" target="_blank" rel="noopener noreferrer" class="upwork-link">Upwork</a></div>
+          <div class="stat-label">Tracked Hours on Upwork</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">100%</div>
@@ -301,7 +231,7 @@
               <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M17.94 18.396c.2.73-.597 1.262-1.195.863l-2.723-1.793-2.724 1.793c-.598.399-1.395-.199-1.196-.863l.731-3.122-2.524-2.06c-.598-.465-.266-1.395.465-1.46l3.255-.2 1.196-3.056c.265-.664 1.262-.664 1.527 0l1.196 3.056m1.662.199v4.65M20 14.078h-4.65" fill="none"/>
             </svg>
           </div>
-          <div class="stat-label"><a href="https://www.upwork.com/freelancers/~01efeb701886987874" target="_blank" rel="noopener noreferrer" class="upwork-link">Top Rated Plus Freelancer</a></div>
+          <div class="stat-label">Top Rated Plus</div>
         </div>
       </div>
       
@@ -309,63 +239,28 @@
       <div class="tech-stack">
         <div class="tech-logos">
           <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" loading="lazy" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
             <span>React</span>
           </div>
           <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" loading="lazy" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
             <span>Node.js</span>
           </div>
           <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastify/fastify-original.svg" alt="Fastify" loading="lazy" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastify/fastify-original.svg" alt="Fastify" />
             <span>Fastify</span>
           </div>
           <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" loading="lazy" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
             <span>Firebase</span>
           </div>
           <div class="tech-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI" />
             <span>OpenAI</span>
           </div>
           <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" loading="lazy" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" />
             <span>WordPress</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Google_Gemini_logo.svg" alt="Gemini" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #4285f4;">🤖</span>
-            <span>Gemini</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Claude_logo.svg" alt="Claude" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #ff6b35;">🧠</span>
-            <span>Claude</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://www.pinecone.io/favicon.ico" alt="Pinecone" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #4caf50;">🌲</span>
-            <span>Pinecone</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://langchain.com/img/langchain-logo.png" alt="LangChain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #ff6b35;">🔗</span>
-            <span>LangChain</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg" alt="Stripe" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #635bff;">💳</span>
-            <span>Stripe</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg" alt="WebSockets" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #010101;">⚡</span>
-            <span>WebSockets</span>
-          </div>
-          <div class="tech-logo">
-            <img src="https://cdn.auth0.com/website/badges/auth0_logo_final_black_RGB.svg" alt="Auth0" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" loading="lazy" />
-            <span style="display:none; font-size: 24px; color: #eb5424;">🔐</span>
-            <span>Auth0</span>
           </div>
         </div>
       </div>
@@ -377,9 +272,9 @@
     <div class="container-fluid">
       <div class="section-header">
         <span class="section-tag">Services</span>
-        <h2 class="section-title">Your Custom AI Toolkit for Growth</h2>
+        <h2 class="section-title">What I Do Best</h2>
         <p class="section-description">
-          I'll build the exact AI solution you need to solve your biggest bottleneck
+          Comprehensive development services to bring your ideas to life
         </p>
       </div>
       <div class="services-grid">
@@ -443,9 +338,9 @@
   <section class="process" id="process">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">🧭 Development Process</span>
-        <h2 class="section-title">Your Project, From Idea to Launch, Simplified</h2>
-        <p class="section-description">4-step path to getting your project done right</p>
+        <span class="section-tag">🧭 My Process</span>
+        <h2 class="section-title">How I’ll Build Your AI Product</h2>
+        <p class="section-description">My Development Process</p>
       </div>
       <div class="process-grid">
         <div class="process-card">
@@ -495,10 +390,6 @@
               <div class="portfolio-content">
                 <h3>Real Estate AI Chatbot</h3>
                 <p>Intelligent assistant trained on property listings</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Captured and qualified 40% more buyer leads by providing 24/7 instant answers to property questions, ensuring no inquiry was missed.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">AI</span>
                   <span class="tag">Chatbot</span>
@@ -517,10 +408,6 @@
               <div class="portfolio-content">
                 <h3>AI Grader Plugin for LearnDash</h3>
                 <p>Automatic grading and feedback for quizzes and assignments</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Saved instructors an estimated 10+ hours per week of manual grading and improved student engagement with instant, personalized quiz feedback.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">WordPress</span>
                   <span class="tag">LearnDash</span>
@@ -539,10 +426,6 @@
               <div class="portfolio-content">
                 <h3>AI Image Generator</h3>
                 <p>Branded visual creation from text prompts</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Reduced design bottlenecks by 95%, allowing the marketing team to instantly create unique, on-brand images without needing a designer.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">AI</span>
                   <span class="tag">Images</span>
@@ -561,10 +444,6 @@
               <div class="portfolio-content">
                 <h3>AI Interactive Card</h3>
                 <p>automated skills/needs matching</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Automated 100% of the manual matching process, leading to a 4x increase in successful skills-to-project connections for the platform's users.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">AI</span>
                   <span class="tag">Interactive</span>
@@ -583,10 +462,6 @@
               <div class="portfolio-content">
                 <h3>AI Blog Writer WordPress Plugin</h3>
                 <p>for content creators, bloggers, and businesses</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Enabled the content team to 3x their blog publishing frequency, dramatically speeding up the writing process from idea to first draft.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">WordPress</span>
                   <span class="tag">Plugin</span>
@@ -605,10 +480,6 @@
               <div class="portfolio-content">
                 <h3>Podcast Name Generator</h3>
                 <p>generating podcast names using OpenAI API</p>
-                <div class="portfolio-result">
-                  <span class="result-label">Result:</span>
-                  <span class="result-text">Eliminated creative roadblocks for new podcasters by generating over 200+ unique, niche-specific name ideas in seconds.</span>
-                </div>
                 <div class="portfolio-tags">
                   <span class="tag">OpenAI</span>
                   <span class="tag">API</span>
@@ -689,9 +560,9 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Testimonials</span>
-        <h2 class="section-title">What business owners say about working with me</h2>
+        <h2 class="section-title">What Clients Say</h2>
         <p class="section-description">
-          Trusted by clients in the US, UK, and EU
+          Real feedback from satisfied clients
         </p>
       </div>
       <div class="testimonials-grid">
@@ -710,7 +581,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="https://www.upwork.com/profile-portraits/c1tj0CCH5n2-zcQUujsvczADxG9wIWGTeO3PLlsDg7gPHaUCgAeKzB2t4t93eidzey" alt="Jordan Gill" class="client-photo" loading="lazy">
+                <img src="https://www.upwork.com/profile-portraits/c1tj0CCH5n2-zcQUujsvczADxG9wIWGTeO3PLlsDg7gPHaUCgAeKzB2t4t93eidzey" alt="Jordan Gill" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Jordan Gill</span>
@@ -737,7 +608,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="https://www.upwork.com/profile-portraits/c1Jxp5-upYggtJ883w5TDwe3Ff8_tBhN4x1MpCATcDeqJNrxIFhpYXLXDwYj8bPFCN" alt="Dana Bakich" class="client-photo" loading="lazy">
+                <img src="https://www.upwork.com/profile-portraits/c1Jxp5-upYggtJ883w5TDwe3Ff8_tBhN4x1MpCATcDeqJNrxIFhpYXLXDwYj8bPFCN" alt="Dana Bakich" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Dana Bakich</span>
@@ -764,7 +635,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="https://www.upwork.com/profile-portraits/c1bzqRKH20UFi7izn6Ltq-D5y7cNHTLcAAUShK66WGvhzMg7OH666T6-TGfor6YJB8" alt="David Lee" class="client-photo" loading="lazy">
+                <img src="https://www.upwork.com/profile-portraits/c1bzqRKH20UFi7izn6Ltq-D5y7cNHTLcAAUShK66WGvhzMg7OH666T6-TGfor6YJB8" alt="David Lee" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">David Lee</span>
@@ -791,7 +662,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="assets/images/Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo" loading="lazy">
+                <img src="Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Leonard Friedrich</span>
@@ -824,7 +695,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="assets/images/David.png" alt="David Bossek" class="client-photo" loading="lazy">
+                <img src="David.png" alt="David Bossek" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">David Bossek</span>
@@ -857,7 +728,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="assets/images/Shanon.png" alt="Shannon Dougherty" class="client-photo" loading="lazy">
+                <img src="Shanon.png" alt="Shannon Dougherty" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Shannon Dougherty</span>
@@ -890,7 +761,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="https://www.upwork.com/profile-portraits/c1ccro9NCeXjdySPxuqm7j-5IlROW2Qm802_qo0PZXnhxoMMnlcIa6BdJ1Mu0fs_Od" alt="Charles Noble" class="client-photo" loading="lazy">
+                <img src="https://www.upwork.com/profile-portraits/c1ccro9NCeXjdySPxuqm7j-5IlROW2Qm802_qo0PZXnhxoMMnlcIa6BdJ1Mu0fs_Od" alt="Charles Noble" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Charles Noble</span>
@@ -917,7 +788,7 @@
           <div class="testimonial-author">
             <div class="client-header">
               <div class="client-image">
-                <img src="https://www.upwork.com/profile-portraits/c1EPXX8-PVIAm6q5Ij3dEPaUcRdAklEgJ-jOgmvvH6x_U8ez5rDMSvCNZoXhacE1KT" alt="Benjamin Jorgensen" class="client-photo" loading="lazy">
+                <img src="https://www.upwork.com/profile-portraits/c1EPXX8-PVIAm6q5Ij3dEPaUcRdAklEgJ-jOgmvvH6x_U8ez5rDMSvCNZoXhacE1KT" alt="Benjamin Jorgensen" class="client-photo">
               </div>
               <div class="client-info">
                 <span class="client-name">Benjamin Jorgensen</span>
@@ -937,82 +808,82 @@
           <div class="logos-track">
             <div class="logo-item">
               <a href="https://mailboosters.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://mailboosters.com/wp-content/uploads/2024/04/mailboosters-logo-wit-snel.webp" alt="MailBoosters" class="company-logo" loading="lazy">
+                <img src="https://mailboosters.com/wp-content/uploads/2024/04/mailboosters-logo-wit-snel.webp" alt="MailBoosters" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.traderscale.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://www.traderscale.com/wp-content/uploads/2025/02/logo.svg" alt="TraderScale" class="company-logo" loading="lazy">
+                <img src="https://www.traderscale.com/wp-content/uploads/2025/02/logo.svg" alt="TraderScale" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://madcotransportation.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo" loading="lazy">
+                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://altanewyork.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://media-production.lp-cdn.com/media/552857c8-fc82-4b66-92ad-bc85e7178c2b" alt="Alta NYC" class="company-logo" loading="lazy">
+                <img src="https://media-production.lp-cdn.com/media/552857c8-fc82-4b66-92ad-bc85e7178c2b" alt="Alta NYC" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://positiveequation.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://static.showit.co/400/tIOsmy9wQ6yqJpd72JFLSQ/shared/yellow_pink.png" alt="Positive Equation" class="company-logo" loading="lazy">
+                <img src="https://static.showit.co/400/tIOsmy9wQ6yqJpd72JFLSQ/shared/yellow_pink.png" alt="Positive Equation" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://nature-nomad.world" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://nature-nomad.world/wp-content/uploads/2023/12/Nature-Nomad-Bildlogo-150x150.png" alt="Nature Nomad" class="company-logo" loading="lazy">
+                <img src="https://nature-nomad.world/wp-content/uploads/2023/12/Nature-Nomad-Bildlogo-150x150.png" alt="Nature Nomad" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.cabriofactory.nl/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://cdn.webshopapp.com/shops/332766/themes/175411/v/1165416/assets/logo.png?20220217121956" alt="Cabrio Factory" class="company-logo" loading="lazy">
+                <img src="https://cdn.webshopapp.com/shops/332766/themes/175411/v/1165416/assets/logo.png?20220217121956" alt="Cabrio Factory" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.thewadinglist.de" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://www.thewadinglist.de/wp-content/uploads/2021/09/TWL-Logo-Black-2021-small-1.png" alt="The Wading List" class="company-logo" loading="lazy">
+                <img src="https://www.thewadinglist.de/wp-content/uploads/2021/09/TWL-Logo-Black-2021-small-1.png" alt="The Wading List" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://mailboosters.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://mailboosters.com/wp-content/uploads/2024/04/mailboosters-logo-wit-snel.webp" alt="MailBoosters" class="company-logo" loading="lazy">
+                <img src="https://mailboosters.com/wp-content/uploads/2024/04/mailboosters-logo-wit-snel.webp" alt="MailBoosters" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.traderscale.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://www.traderscale.com/wp-content/uploads/2025/02/logo.svg" alt="TraderScale" class="company-logo" loading="lazy">
+                <img src="https://www.traderscale.com/wp-content/uploads/2025/02/logo.svg" alt="TraderScale" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://madcotransportation.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo" loading="lazy">
+                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://altanewyork.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://media-production.lp-cdn.com/media/552857c8-fc82-4b66-92ad-bc85e7178c2b" alt="Alta NYC" class="company-logo" loading="lazy">
+                <img src="https://media-production.lp-cdn.com/media/552857c8-fc82-4b66-92ad-bc85e7178c2b" alt="Alta NYC" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://positiveequation.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://static.showit.co/400/tIOsmy9wQ6yqJpd72JFLSQ/shared/yellow_pink.png" alt="Positive Equation" class="company-logo" loading="lazy">
+                <img src="https://static.showit.co/400/tIOsmy9wQ6yqJpd72JFLSQ/shared/yellow_pink.png" alt="Positive Equation" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://nature-nomad.world" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://nature-nomad.world/wp-content/uploads/2023/12/Nature-Nomad-Bildlogo-150x150.png" alt="Nature Nomad" class="company-logo" loading="lazy">
+                <img src="https://nature-nomad.world/wp-content/uploads/2023/12/Nature-Nomad-Bildlogo-150x150.png" alt="Nature Nomad" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.cabriofactory.nl/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://cdn.webshopapp.com/shops/332766/themes/175411/v/1165416/assets/logo.png?20220217121956" alt="Cabrio Factory" class="company-logo" loading="lazy">
+                <img src="https://cdn.webshopapp.com/shops/332766/themes/175411/v/1165416/assets/logo.png?20220217121956" alt="Cabrio Factory" class="company-logo">
               </a>
             </div>
             <div class="logo-item">
               <a href="https://www.thewadinglist.de" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://www.thewadinglist.de/wp-content/uploads/2021/09/TWL-Logo-Black-2021-small-1.png" alt="The Wading List" class="company-logo" loading="lazy">
+                <img src="https://www.thewadinglist.de/wp-content/uploads/2021/09/TWL-Logo-Black-2021-small-1.png" alt="The Wading List" class="company-logo">
               </a>
             </div>
           </div>
@@ -1026,16 +897,15 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Contact</span>
-        <h2 class="section-title">Ready to Get Started?</h2>
+        <h2 class="section-title">Let's Work Together</h2>
         <p class="section-description">
-          Your first step is a free, 15-minute strategy call. There's no pressure and no obligation. 
+          Ready to bring your ideas to life? Let's discuss your project
         </p>
       </div>
       <div class="contact-content">
         <div class="contact-info">
-          <!-- <h5>Get In Touch</h5> -->
-          <p>We'll discuss your goals, I'll give you actionable ideas, and you can see if I'm the right fit. You have nothing to lose and hours of your time to gain.</p>
-          <!-- <p>I'm always excited to work on new projects and help businesses grow with innovative solutions.</p> -->
+          <h3>Get In Touch</h3>
+          <p>I'm always excited to work on new projects and help businesses grow with innovative solutions.</p>
           <div class="contact-methods">
             <div class="contact-method">
               <span class="material-icons">email</span>
@@ -1048,14 +918,14 @@
               <span class="material-icons">schedule</span>
               <div>
                 <h4>Response Time</h4>
-                <p>Within 2 hours</p>
+                <p>Within 3 hours</p>
               </div>
             </div>
             <div class="contact-method">
               <span class="material-icons">location_on</span>
               <div>
                 <h4>Location</h4>
-                <p>Kyiv, Ukraine</p>
+                <p>Ukraine</p>
               </div>
             </div>
           </div>
@@ -1105,12 +975,11 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-        <div class="brand">
-          <img src="assets/images/riyaka-logo.png" alt="Riyaka logo" class="brand-logo" width="28" height="28" loading="lazy">
-          <span class="brand-name">Art R.</span>
-        </div>
-          <p>AI & Web Development Expert <br/>
-            <span class="top-badge">Top Rated Plus</span> on <a href="https://www.upwork.com/freelancers/~01efeb701886987874" target="_blank" rel="noopener noreferrer" class="upwork-link">Upwork</a></p>
+          <div class="brand">
+            <span class="logo-dot"></span>
+            <span class="brand-name">Art R.</span>
+          </div>
+          <p>AI & Web Development Expert</p>
         </div>
       <div class="footer-links">
           <div class="footer-section">
@@ -1138,77 +1007,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Sticky Call Button -->
-  <a href="https://calendly.com/temona007/intro-call" target="_blank" rel="noopener noreferrer" class="sticky-call-btn" aria-label="Book a call with Art R.">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="call-icon">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 8.25h18M4.5 7.5v11.25A2.25 2.25 0 006.75 21h10.5A2.25 2.25 0 0019.5 18.75V7.5M16.5 12.75h.008v.008H16.5v-.008zM12 12.75h.008v.008H12v-.008zM7.5 12.75h.008v.008H7.5v-.008zM16.5 16.5h.008v.008H16.5V16.5zM12 16.5h.008v.008H12V16.5zM7.5 16.5h.008v.008H7.5V16.5z" />
-    </svg>
-    <span class="call-text">Book a call</span>
-  </a>
-
-  <!-- Chatbot Widget -->
-  <div class="chatbot-widget">
-    <!-- Chat Icon -->
-    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="chat-icon">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-      </svg>
-      <span class="chat-notification" id="chatNotification" style="display: none;">1</span>
-    </button>
-
-    <!-- Chat Modal -->
-    <div class="chatbot-modal" id="chatbotModal">
-      <div class="chatbot-header">
-        <div class="chatbot-avatar">
-          <img src="assets/images/small-riyaka.png" alt="Art R." class="chatbot-avatar-img">
-        </div>
-        <div class="chatbot-info">
-          <h3>Art R.</h3>
-          <p>AI assistant</p>
-        </div>
-        <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      
-      <div class="chatbot-messages" id="chatbotMessages">
-        <div class="message bot-message">
-          <div class="message-avatar">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-            </svg>
-          </div>
-          <div class="message-content">
-            <p>Hi👋 I’m Art — your AI & Web Development assistant.
-              I can help you with AI chatbots, web apps, or custom WordPress solutions.
-              What would you like to build today?</p>
-            <span class="message-time">Just now</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="chatbot-typing" id="chatbotTyping" style="display: none;">
-        <div class="typing-indicator">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <span class="typing-text">Art R. is typing...</span>
-      </div>
-      
-      <div class="chatbot-input">
-        <input type="text" id="chatbotInput" placeholder="Type your message..." maxlength="500">
-        <button id="chatbotSend" aria-label="Send message">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
 
   <script>
     // Mobile menu toggle
@@ -1515,150 +1313,100 @@
       });
     });
 
-    // Active navigation links on scroll
-    function updateActiveNavLink() {
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-      
-      let currentSection = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          currentSection = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    // Add scroll event listener
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Initialize active link on page load
-    updateActiveNavLink();
-
     // Chatbot functionality
     class Chatbot {
       constructor() {
-        this.isOpen = false;
-        this.threadId = null;
         this.assistantId = 'asst_aFu6oqUDW0xmHflIZPgjVuZc';
         this.netlifyFunctionUrl = '/.netlify/functions/chatbot';
+        this.threadId = null;
+        this.isOpen = false;
+        this.isTyping = false;
         
-        this.init();
+        this.initializeElements();
+        this.attachEventListeners();
       }
 
-      init() {
-        this.toggle = document.getElementById('chatbotToggle');
-        this.modal = document.getElementById('chatbotModal');
-        this.close = document.getElementById('chatbotClose');
-        this.messages = document.getElementById('chatbotMessages');
-        this.input = document.getElementById('chatbotInput');
-        this.send = document.getElementById('chatbotSend');
-        this.typing = document.getElementById('chatbotTyping');
-        this.notification = document.getElementById('chatNotification');
+      initializeElements() {
+        this.toggle = document.querySelector('.chatbot-toggle');
+        this.modal = document.querySelector('.chatbot-modal');
+        this.closeBtn = document.querySelector('.chatbot-close');
+        this.messagesContainer = document.querySelector('.chatbot-messages');
+        this.input = document.querySelector('.chatbot-input');
+        this.send = document.querySelector('.chatbot-send');
+        this.typing = document.querySelector('.chatbot-typing');
+      }
 
-        this.toggle.addEventListener('click', () => this.toggleChat());
-        this.close.addEventListener('click', () => this.closeChat());
-        this.send.addEventListener('click', () => this.sendMessage());
-        this.input.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') this.sendMessage();
+      attachEventListeners() {
+        this.toggle?.addEventListener('click', () => this.toggleChat());
+        this.closeBtn?.addEventListener('click', () => this.closeChat());
+        this.send?.addEventListener('click', () => this.sendMessage());
+        this.input?.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            this.sendMessage();
+          }
         });
 
         // Close on outside click
-        document.addEventListener('click', (e) => {
-          if (!this.modal.contains(e.target) && !this.toggle.contains(e.target) && this.isOpen) {
+        this.modal?.addEventListener('click', (e) => {
+          if (e.target === this.modal) {
             this.closeChat();
           }
         });
       }
 
       toggleChat() {
+        this.isOpen = !this.isOpen;
         if (this.isOpen) {
-          this.closeChat();
-        } else {
           this.openChat();
+        } else {
+          this.closeChat();
         }
       }
 
       openChat() {
+        this.modal?.classList.add('open');
+        this.toggle?.classList.add('active');
+        this.input?.focus();
         this.isOpen = true;
-        this.modal.classList.add('open');
-        this.notification.style.display = 'none';
-        this.input.focus();
       }
 
       closeChat() {
+        this.modal?.classList.remove('open');
+        this.toggle?.classList.remove('active');
         this.isOpen = false;
-        this.modal.classList.remove('open');
       }
 
       async sendMessage() {
-        const message = this.input.value.trim();
-        if (!message) return;
+        const message = this.input?.value?.trim();
+        if (!message || this.isTyping) return;
 
-        // Add user message to chat
         this.addMessage(message, 'user');
         this.input.value = '';
         this.send.disabled = true;
-
-        // Show typing indicator
         this.showTyping();
 
         try {
-          // Create thread if it doesn't exist
+          // Create thread if needed
           if (!this.threadId) {
-            const threadResponse = await this.callNetlifyFunction('createThread');
-            this.threadId = threadResponse.id;
+            this.threadId = await this.createThread();
           }
 
           // Add message to thread
-          await this.callNetlifyFunction('addMessage', {
-            threadId: this.threadId,
-            message: message
-          });
+          await this.addMessageToThread(message);
 
-          // Run assistant with retry logic for server errors
-          let runResponse;
-          let retryCount = 0;
-          const maxRetries = 2;
-
-          while (retryCount <= maxRetries) {
-            try {
-              runResponse = await this.callNetlifyFunction('runAssistant', {
-                threadId: this.threadId
-              });
-              break; // Success, exit retry loop
-            } catch (retryError) {
-              if (retryError.message.includes('server_error') && retryCount < maxRetries) {
-                retryCount++;
-                console.log(`Retrying assistant run (attempt ${retryCount + 1}/${maxRetries + 1})`);
-                await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds before retry
-                continue;
-              }
-              throw retryError; // Re-throw if not a server error or max retries reached
-            }
-          }
+          // Run assistant
+          const run = await this.runAssistant();
 
           // Poll for completion
-          const completedRun = await this.pollRunStatus(runResponse.id);
+          const completedRun = await this.pollRunStatus(run.id);
 
-          // Get assistant messages
-          const messagesResponse = await this.callNetlifyFunction('getMessages', {
-            threadId: this.threadId
-          });
+          // Get messages
+          const messages = await this.getMessages();
 
           // Hide typing and show response
           this.hideTyping();
-          const lastMessage = messagesResponse.data[messagesResponse.data.length - 1];
+          const lastMessage = messages.data[messages.data.length - 1];
           this.addMessage(lastMessage.content[0].text.value, 'bot');
 
         } catch (error) {
@@ -1675,49 +1423,51 @@
 
       async callNetlifyFunction(action, data = {}) {
         try {
-          console.log('🔗 Calling Netlify function:', action, data);
-          console.log('🔗 Function URL:', this.netlifyFunctionUrl);
-          
           const response = await fetch(this.netlifyFunctionUrl, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              action: action,
-              data: data
-            })
+            body: JSON.stringify({ action, ...data })
           });
 
-          console.log('📡 Response status:', response.status);
-          console.log('📡 Response headers:', Object.fromEntries(response.headers.entries()));
-
           if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-            console.error('❌ Netlify function error:', errorData);
-            throw new Error(errorData.error || `HTTP ${response.status}: Failed to call Netlify function`);
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
 
           const result = await response.json();
-          console.log('✅ Netlify function success:', result);
           return result;
         } catch (error) {
-          console.error('❌ callNetlifyFunction error:', error);
+          console.error('Netlify function error:', error);
           throw error;
         }
       }
 
-      async pollRunStatus(runId) {
-        const maxAttempts = 60; // Increased from 30 to 60 seconds
-        let attempts = 0;
+      async createThread() {
+        const result = await this.callNetlifyFunction('createThread');
+        return result.thread_id;
+      }
 
-        while (attempts < maxAttempts) {
-          const run = await this.callNetlifyFunction('checkRunStatus', {
-            threadId: this.threadId,
-            runId: runId
-          });
+      async addMessageToThread(message) {
+        await this.callNetlifyFunction('addMessage', {
+          threadId: this.threadId,
+          message: message
+        });
+      }
 
-          console.log('Run status:', run.status, 'Attempt:', attempts + 1);
+      async runAssistant() {
+        const result = await this.callNetlifyFunction('runAssistant', {
+          threadId: this.threadId
+        });
+        return result.run;
+      }
+
+      async pollRunStatus(runId, maxAttempts = 30) {
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+          const result = await this.callNetlifyFunction('checkRunStatus', { runId });
+          const run = result.run;
+
+          console.log(`Run status: ${run.status} (Attempt: ${attempt})`);
 
           if (run.status === 'completed') {
             return run;
@@ -1726,166 +1476,115 @@
             
             // If the run failed with server error, try fallback
             if (run.last_error?.code === 'server_error' || run.last_error?.message?.includes('Sorry, something went wrong')) {
-              console.log('Assistant failed with server error, trying fallback...');
+              console.log('🔄 Assistant failed with server error, trying fallback...');
               return await this.tryFallbackResponse();
             }
             
             // Check if there's a last_error for more details
             if (run.last_error) {
+              console.log('❌ Assistant failed with error:', run.last_error);
               throw new Error(`Assistant run failed: ${run.last_error.message || 'Unknown error'}`);
             }
-            throw new Error('Assistant run failed - please try again');
-          } else if (run.status === 'cancelled') {
-            throw new Error('Assistant run was cancelled');
-          } else if (run.status === 'expired') {
-            throw new Error('Assistant run expired - please try again');
+            
+            throw new Error('Assistant run failed');
+          } else if (run.status === 'cancelled' || run.status === 'expired') {
+            throw new Error(`Assistant run ${run.status}`);
           }
 
-          // Wait 1 second before checking again
+          // Wait before next attempt
           await new Promise(resolve => setTimeout(resolve, 1000));
-          attempts++;
         }
 
-        // If we get here, it timed out - try fallback
-        console.log('Assistant timed out, trying fallback...');
-        return await this.tryFallbackResponse();
+        throw new Error('Assistant run timed out');
       }
 
-        async tryFallbackResponse() {
-          try {
-            console.log('Attempting fallback response...');
-            
-            // Get the last user message from the thread
-            const messagesResponse = await this.callNetlifyFunction('getMessages', {
-              threadId: this.threadId
-            });
-            
-            const lastUserMessage = messagesResponse.data.find(msg => msg.role === 'user');
-            if (!lastUserMessage) {
-              throw new Error('No user message found for fallback');
-            }
-            
-            const userMessage = lastUserMessage.content[0].text.value;
-            
-            // Try the Netlify function fallback first
-            try {
-              const fallbackResponse = await this.callNetlifyFunction('runDirectChat', {
-                threadId: this.threadId,
-                message: userMessage
-              });
-              
-              console.log('Netlify fallback response successful');
-              return fallbackResponse;
-            } catch (netlifyError) {
-              console.log('Netlify fallback failed, using local fallback:', netlifyError.message);
-              
-              // Use local fallback responses
-              const fallbackMessage = this.getLocalFallbackResponse(userMessage);
-              
-              // Add the fallback response to the thread
-              await this.callNetlifyFunction('addMessage', {
-                threadId: this.threadId,
-                message: fallbackMessage,
-                role: 'assistant'
-              });
-              
-              // Return a mock completed run
-              return {
-                id: 'local_fallback_' + Date.now(),
-                status: 'completed',
-                object: 'thread.run',
-                created_at: Math.floor(Date.now() / 1000),
-                assistant_id: 'local_fallback',
-                thread_id: this.threadId,
-                type: 'assistant.run',
-                model: 'local_fallback',
-                instructions: 'Local fallback response',
-                tools: [],
-                tool_resources: {},
-                metadata: {},
-                usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
-              };
-            }
-            
-          } catch (error) {
-            console.error('All fallbacks failed:', error);
-            throw error;
-          }
-        }
-
-        getLocalFallbackResponse(message) {
-          const lowerMessage = message.toLowerCase();
+      async tryFallbackResponse() {
+        try {
+          console.log('🔄 Attempting fallback response...');
           
-          // Check if it's a quota issue
-          if (message.includes('insufficient_quota') || message.includes('quota')) {
-            return 'I\'m temporarily experiencing high demand, but I\'d love to help you directly! 💬\n\n📧 Email: temonaupw@gmail.com\n📞 Book a free call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
-          } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-            return 'Hi! 👋 I\'m having some technical difficulties right now, but I\'d love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call';
-          } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('budget')) {
-            return 'I\'d be happy to discuss pricing! 💰 Please book a free consultation call at https://calendly.com/temona007/intro-call or email me at temonaupw@gmail.com';
-          } else if (lowerMessage.includes('ai') || lowerMessage.includes('chatbot') || lowerMessage.includes('automation')) {
-            return 'I specialize in AI chatbots and automation! 🤖 Let\'s discuss your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
-          } else if (lowerMessage.includes('website') || lowerMessage.includes('web app') || lowerMessage.includes('wordpress')) {
-            return 'I build custom websites and web applications! 🌐 Let\'s talk about your project. Book a call at https://calendly.com/temona007/intro-call or email temonaupw@gmail.com';
-          } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
-            return 'You can reach me at:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call\n💼 Upwork: https://www.upwork.com/freelancers/~01efeb701886987874';
-          } else {
-            return 'I\'m experiencing technical difficulties, but I\'d love to help you! Please reach out directly:\n📧 Email: temonaupw@gmail.com\n📞 Book a call: https://calendly.com/temona007/intro-call';
-          }
+          // Get the last user message
+          const messagesResponse = await this.getMessages();
+          const userMessage = messagesResponse.data[messagesResponse.data.length - 1]?.content[0]?.text?.value || 'Hello';
+          
+          console.log('📝 Retrieved messages for fallback:', messagesResponse);
+          console.log('💬 User message for fallback:', userMessage);
+          
+          // Try direct chat completion as fallback
+          console.log('🤖 Trying direct chat completion fallback...');
+          const directChatResponse = await this.callNetlifyFunction('runDirectChat', {
+            message: userMessage
+          });
+          
+          console.log('✅ Direct chat fallback response successful');
+          this.hideTyping();
+          this.addMessage(directChatResponse.response, 'bot');
+          return directChatResponse;
+          
+        } catch (directChatError) {
+          console.log('❌ Direct chat fallback failed, using local fallback:', directChatError.message);
+          
+          // Use local fallback response
+          const fallbackMessage = this.getLocalFallbackResponse(userMessage);
+          console.log('💬 Local fallback message:', fallbackMessage);
+          this.hideTyping();
+          this.addMessage(fallbackMessage, 'bot');
+          return { response: fallbackMessage };
         }
+      }
+
+      async getMessages() {
+        return await this.callNetlifyFunction('getMessages', {
+          threadId: this.threadId
+        });
+      }
+
+      getLocalFallbackResponse(message) {
+        const responses = [
+          "Hi! 👋 I'm having some technical difficulties right now, but I'd love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call",
+          "Hello! I'm experiencing some connectivity issues, but I'm here to help with your AI and web development needs. Feel free to email me at temonaupw@gmail.com or schedule a call!",
+          "Thanks for reaching out! I'm currently having some technical issues, but I'd be happy to discuss your project. Contact me at temonaupw@gmail.com or book a call to chat!"
+        ];
+        
+        return responses[Math.floor(Math.random() * responses.length)];
+      }
 
       addMessage(content, sender) {
         const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${sender}-message`;
-
+        messageDiv.className = `message ${sender}`;
+        
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
         
         if (sender === 'bot') {
-          avatar.innerHTML = `
-            <img src="assets/images/small-riyaka.png" alt="Art R." class="message-avatar-img">
-          `;
+          avatar.innerHTML = '<img src="assets/images/small-riyaka.png" alt="Art R." class="message-avatar-img">';
         } else {
-          avatar.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-            </svg>
-          `;
+          avatar.innerHTML = '<div class="user-avatar">U</div>';
         }
-
+        
         const messageContent = document.createElement('div');
         messageContent.className = 'message-content';
-        messageContent.innerHTML = `
-          <p>${this.escapeHtml(content)}</p>
-          <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-        `;
-
+        messageContent.textContent = content;
+        
         messageDiv.appendChild(avatar);
         messageDiv.appendChild(messageContent);
-        this.messages.appendChild(messageDiv);
-
-        // Scroll to bottom
-        this.messages.scrollTop = this.messages.scrollHeight;
+        
+        this.messagesContainer?.appendChild(messageDiv);
+        this.messagesContainer?.scrollTop = this.messagesContainer.scrollHeight;
       }
 
       showTyping() {
-        this.typing.style.display = 'flex';
-        this.messages.scrollTop = this.messages.scrollHeight;
+        this.isTyping = true;
+        this.typing?.classList.add('active');
       }
 
       hideTyping() {
-        this.typing.style.display = 'none';
-      }
-
-      escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+        this.isTyping = false;
+        this.typing?.classList.remove('active');
       }
     }
 
-    // Initialize chatbot when page loads
-    document.addEventListener('DOMContentLoaded', () => {
+    // Initialize chatbot when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
       new Chatbot();
     });
   </script>
