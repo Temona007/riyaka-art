@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant Chatbot Demo - Art R.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        .demo-header {
+            background: linear-gradient(135deg, #14a800 0%, #0f8a00 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .demo-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .demo-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .demo-content {
+            padding: 30px;
+        }
+
+        .api-key-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+
+        .api-key-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #14a800;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #14a800 0%, #0f8a00 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(20, 168, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .status {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .chatbot-container {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #14a800 0%, #0f8a00 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .chatbot-status {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: #14a800;
+            color: white;
+        }
+
+        .message.bot .message-avatar {
+            background: #6c757d;
+            color: white;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .message.user .message-content {
+            background: #14a800;
+            color: white;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e9ecef;
+        }
+
+        .chatbot-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chatbot-input input:focus {
+            border-color: #14a800;
+        }
+
+        .chatbot-send {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14a800 0%, #0f8a00 100%);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+
+        .chatbot-send:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 18px;
+            max-width: 70%;
+            margin-bottom: 20px;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #14a800;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #14a800;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #0f8a00;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🤖 AI Assistant Chatbot Demo</h1>
+            <p>Test your OpenAI Assistant integration</p>
+        </div>
+
+        <div class="demo-content">
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+
+            <div class="api-key-section">
+                <h3>🔑 API Configuration</h3>
+                <div class="input-group">
+                    <input type="password" id="apiKeyInput" placeholder="Enter your OpenAI API Key" />
+                    <button class="btn btn-primary" onclick="setApiKey()">Set API Key</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="assistantIdInput" placeholder="Assistant ID (optional)" value="asst_aFu6oqUDW0xmHflIZPgjVuZc" />
+                    <button class="btn btn-secondary" onclick="testConnection()">Test Connection</button>
+                </div>
+                <div id="statusMessage"></div>
+            </div>
+
+            <div class="chatbot-container">
+                <div class="chatbot-header">
+                    <div class="chatbot-avatar">🤖</div>
+                    <div class="chatbot-info">
+                        <h3>AI Assistant</h3>
+                        <div class="chatbot-status" id="connectionStatus">Not connected</div>
+                    </div>
+                </div>
+
+                <div class="chatbot-messages" id="chatMessages">
+                    <div class="message bot">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Hello! I'm your AI assistant. Please set your API key above to start chatting.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="chatbot-input">
+                    <input type="text" id="messageInput" placeholder="Type your message..." disabled />
+                    <button class="chatbot-send" id="sendButton" onclick="sendMessage()" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ChatbotDemo {
+            constructor() {
+                this.apiKey = null;
+                this.assistantId = 'asst_aFu6oqUDW0xmHflIZPgjVuZc';
+                this.threadId = null;
+                this.baseUrl = 'https://api.openai.com/v1';
+                
+                this.initializeElements();
+                this.attachEventListeners();
+            }
+
+            initializeElements() {
+                this.apiKeyInput = document.getElementById('apiKeyInput');
+                this.assistantIdInput = document.getElementById('assistantIdInput');
+                this.statusMessage = document.getElementById('statusMessage');
+                this.connectionStatus = document.getElementById('connectionStatus');
+                this.chatMessages = document.getElementById('chatMessages');
+                this.messageInput = document.getElementById('messageInput');
+                this.sendButton = document.getElementById('sendButton');
+                this.typingIndicator = document.getElementById('typingIndicator');
+            }
+
+            attachEventListeners() {
+                this.messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !this.sendButton.disabled) {
+                        this.sendMessage();
+                    }
+                });
+            }
+
+            setApiKey() {
+                const apiKey = this.apiKeyInput.value.trim();
+                if (!apiKey) {
+                    this.showStatus('Please enter your API key', 'error');
+                    return;
+                }
+
+                this.apiKey = apiKey;
+                this.assistantId = this.assistantIdInput.value.trim() || this.assistantId;
+                
+                this.showStatus('API key set successfully! You can now test the connection.', 'success');
+                this.connectionStatus.textContent = 'API key set - Ready to test';
+                this.messageInput.disabled = false;
+                this.sendButton.disabled = false;
+            }
+
+            async testConnection() {
+                if (!this.apiKey) {
+                    this.showStatus('Please set your API key first', 'error');
+                    return;
+                }
+
+                this.showStatus('Testing connection...', 'info');
+                this.connectionStatus.textContent = 'Testing connection...';
+
+                try {
+                    // Test API key by creating a thread
+                    const response = await fetch(`${this.baseUrl}/threads`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'Content-Type': 'application/json',
+                            'OpenAI-Beta': 'assistants=v2'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(error.error?.message || 'Connection failed');
+                    }
+
+                    const thread = await response.json();
+                    this.threadId = thread.id;
+
+                    this.showStatus('✅ Connection successful! You can now chat with the assistant.', 'success');
+                    this.connectionStatus.textContent = 'Connected - Ready to chat';
+                    
+                    // Add success message to chat
+                    this.addMessage('Great! Connection established. How can I help you today?', 'bot');
+
+                } catch (error) {
+                    this.showStatus(`❌ Connection failed: ${error.message}`, 'error');
+                    this.connectionStatus.textContent = 'Connection failed';
+                }
+            }
+
+            async sendMessage() {
+                const message = this.messageInput.value.trim();
+                if (!message || !this.apiKey) return;
+
+                this.lastUserMessage = message; // Store for fallback
+                this.addMessage(message, 'user');
+                this.messageInput.value = '';
+                this.sendButton.disabled = true;
+                this.showTyping();
+
+                try {
+                    // Create thread if needed
+                    if (!this.threadId) {
+                        const threadResponse = await fetch(`${this.baseUrl}/threads`, {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${this.apiKey}`,
+                                'Content-Type': 'application/json',
+                                'OpenAI-Beta': 'assistants=v2'
+                            }
+                        });
+                        const thread = await threadResponse.json();
+                        this.threadId = thread.id;
+                    }
+
+                    // Add message to thread
+                    await fetch(`${this.baseUrl}/threads/${this.threadId}/messages`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'Content-Type': 'application/json',
+                            'OpenAI-Beta': 'assistants=v2'
+                        },
+                        body: JSON.stringify({
+                            role: 'user',
+                            content: message
+                        })
+                    });
+
+                    // Run assistant
+                    const runResponse = await fetch(`${this.baseUrl}/threads/${this.threadId}/runs`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'Content-Type': 'application/json',
+                            'OpenAI-Beta': 'assistants=v2'
+                        },
+                        body: JSON.stringify({
+                            assistant_id: this.assistantId
+                        })
+                    });
+
+                    const run = await runResponse.json();
+
+                    // Poll for completion
+                    const completedRun = await this.pollRunStatus(run.id);
+
+                    this.hideTyping();
+
+                    // Check if we got a fallback response
+                    if (completedRun.fallback) {
+                        this.addMessage(completedRun.message, 'bot');
+                    } else {
+                        // Get messages from thread
+                        const messagesResponse = await fetch(`${this.baseUrl}/threads/${this.threadId}/messages`, {
+                            headers: {
+                                'Authorization': `Bearer ${this.apiKey}`,
+                                'OpenAI-Beta': 'assistants=v2'
+                            }
+                        });
+
+                        const messages = await messagesResponse.json();
+                        const lastMessage = messages.data[0]; // Most recent message
+                        this.addMessage(lastMessage.content[0].text.value, 'bot');
+                    }
+
+                } catch (error) {
+                    this.hideTyping();
+                    this.addMessage(`Sorry, I encountered an error: ${error.message}`, 'bot');
+                    console.error('Chatbot error:', error);
+                } finally {
+                    this.sendButton.disabled = false;
+                }
+            }
+
+            async pollRunStatus(runId, maxAttempts = 30) {
+                for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+                    const response = await fetch(`${this.baseUrl}/threads/${this.threadId}/runs/${runId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'OpenAI-Beta': 'assistants=v2'
+                        }
+                    });
+
+                    const run = await response.json();
+
+                    if (run.status === 'completed') {
+                        return run;
+                    } else if (run.status === 'failed') {
+                        console.log('Assistant run failed:', run);
+                        
+                        // If the run failed with server error, try fallback
+                        if (run.last_error?.code === 'server_error' || run.last_error?.message?.includes('Sorry, something went wrong')) {
+                            console.log('🔄 Assistant failed with server error, trying fallback...');
+                            return await this.tryFallbackResponse();
+                        }
+                        
+                        throw new Error(`Assistant run failed: ${run.last_error?.message || 'Unknown error'}`);
+                    } else if (run.status === 'cancelled' || run.status === 'expired') {
+                        throw new Error(`Assistant run ${run.status}`);
+                    }
+
+                    // Wait before next attempt
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+
+                throw new Error('Assistant run timed out');
+            }
+
+            async tryFallbackResponse() {
+                try {
+                    console.log('🔄 Attempting fallback response...');
+                    
+                    // Try direct chat completion as fallback
+                    const response = await fetch(`${this.baseUrl}/chat/completions`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${this.apiKey}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            model: 'gpt-4o-mini',
+                            messages: [
+                                {
+                                    role: 'system',
+                                    content: 'You are Art R., an AI assistant. Your role is to help visitors understand Art R\'s web development and AI services, answer questions about AI chatbots, web apps, WordPress development, and guide them to contact Art for projects. Be friendly, helpful, and professional.'
+                                },
+                                {
+                                    role: 'user',
+                                    content: this.lastUserMessage || 'Hello'
+                                }
+                            ],
+                            max_tokens: 500,
+                            temperature: 0.7
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(`Direct chat failed: ${error.error?.message || 'Unknown error'}`);
+                    }
+
+                    const data = await response.json();
+                    const assistantMessage = data.choices[0].message.content;
+                    
+                    console.log('✅ Direct chat fallback response successful');
+                    return { fallback: true, message: assistantMessage };
+                    
+                } catch (directChatError) {
+                    console.log('❌ Direct chat fallback failed, using local fallback:', directChatError.message);
+                    
+                    // Use local fallback response
+                    const fallbackMessage = this.getLocalFallbackResponse();
+                    return { fallback: true, message: fallbackMessage };
+                }
+            }
+
+            getLocalFallbackResponse() {
+                const responses = [
+                    "Hi! 👋 I'm having some technical difficulties right now, but I'd love to help you! You can reach me directly at temonaupw@gmail.com or book a free call at https://calendly.com/temona007/intro-call",
+                    "Hello! I'm experiencing some connectivity issues, but I'm here to help with your AI and web development needs. Feel free to email me at temonaupw@gmail.com or schedule a call!",
+                    "Thanks for reaching out! I'm currently having some technical issues, but I'd be happy to discuss your project. Contact me at temonaupw@gmail.com or book a call to chat!"
+                ];
+                
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+
+            addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar';
+                avatar.textContent = sender === 'user' ? '👤' : '🤖';
+
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.textContent = content;
+
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(messageContent);
+
+                this.chatMessages.appendChild(messageDiv);
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+
+            showTyping() {
+                this.typingIndicator.classList.add('active');
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+
+            hideTyping() {
+                this.typingIndicator.classList.remove('active');
+            }
+
+            showStatus(message, type) {
+                this.statusMessage.innerHTML = `<div class="status ${type}">${message}</div>`;
+            }
+        }
+
+        // Global functions for buttons
+        function setApiKey() {
+            chatbot.setApiKey();
+        }
+
+        function testConnection() {
+            chatbot.testConnection();
+        }
+
+        function sendMessage() {
+            chatbot.sendMessage();
+        }
+
+        // Initialize chatbot when page loads
+        let chatbot;
+        document.addEventListener('DOMContentLoaded', () => {
+            chatbot = new ChatbotDemo();
+        });
+    </script>
+</body>
+</html>
