@@ -1637,8 +1637,19 @@
 
           // Hide typing and show response
           this.hideTyping();
+          console.log('📝 Messages response:', messagesResponse);
+          console.log('📝 Messages data:', messagesResponse.data);
+          
           const lastMessage = messagesResponse.data[messagesResponse.data.length - 1];
-          this.addMessage(lastMessage.content[0].text.value, 'bot');
+          console.log('📝 Last message:', lastMessage);
+          console.log('📝 Last message content:', lastMessage.content);
+          
+          if (lastMessage && lastMessage.content && lastMessage.content[0] && lastMessage.content[0].text) {
+            this.addMessage(lastMessage.content[0].text.value, 'bot');
+          } else {
+            console.error('❌ Invalid message structure:', lastMessage);
+            this.addMessage('Sorry, I received an invalid response format. Please try again.', 'bot');
+          }
 
         } catch (error) {
           console.error('Chatbot error:', error);
@@ -1684,16 +1695,25 @@
         const maxAttempts = 30;
         let attempts = 0;
 
+        console.log(`🔄 Starting to poll run status for: ${runId}`);
+
         while (attempts < maxAttempts) {
           const run = await this.callNetlifyFunction('checkRunStatus', {
             threadId: this.threadId,
             runId: runId
           });
 
+          console.log(`🔄 Poll attempt ${attempts + 1}: Status = ${run.status}`);
+
           if (run.status === 'completed') {
+            console.log('✅ Run completed successfully!');
             return run;
           } else if (run.status === 'failed') {
-            throw new Error('Assistant run failed');
+            console.error('❌ Run failed:', run);
+            throw new Error(`Assistant run failed: ${run.last_error?.message || 'Unknown error'}`);
+          } else if (run.status === 'cancelled' || run.status === 'expired') {
+            console.error(`❌ Run ${run.status}`);
+            throw new Error(`Assistant run ${run.status}`);
           }
 
           // Wait 1 second before checking again
@@ -1701,6 +1721,7 @@
           attempts++;
         }
 
+        console.error('❌ Run timed out after 30 attempts');
         throw new Error('Assistant run timed out');
       }
 
