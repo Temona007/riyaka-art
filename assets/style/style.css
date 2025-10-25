@@ -2485,6 +2485,11 @@ span.top-badge {
     box-shadow: var(--shadow-lg);
     border-top: 1px solid var(--border);
   }
+
+  .chatbot-widget {
+    bottom: 71px;
+        right: 27px;
+  }
   
   .nav-links.open {
     display: flex;
@@ -2551,6 +2556,8 @@ span.top-badge {
   
   .services-grid {
     grid-template-columns: 1fr;
+    padding-left: 20px;
+        padding-right: 20px;
   }
   
   .about-stats-simplified {
@@ -2636,6 +2643,42 @@ span.top-badge {
   .container {
     padding: 0 var(--space-4);
   }
+
+  .ai-book-features li::before {
+    display: none;
+  }
+
+  .air3-presence-indicator-online {
+    background-color: #14a800;
+    top: 43px;
+    left: -15px;
+  }
+
+  .logo-item {
+    width: 111px;
+    height: 60px;
+}
+
+#contact {
+  text-align: center;
+}
+
+.contact-methods {
+  display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.footer-content { 
+  text-align: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
   .hero {
     min-height: 64vh;
