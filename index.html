@@ -1021,6 +1021,58 @@
     </div>
   </section>
 
+  <!-- AI Tools Book Section -->
+  <section class="ai-book" id="ai-book">
+    <div class="container">
+      <div class="ai-book-content">
+        <div class="ai-book-left">
+          <div class="ai-book-header">
+            <span class="section-tag">Free Resource</span>
+            <h2 class="section-title">Boost Your Business with AI</h2>
+          </div>
+          <div class="ai-book-description">
+            <p>Discover 10 cutting-edge AI tools that:</p>
+            <ul class="ai-book-features">
+              <li>Automate what slows you down.</li>
+              <li>Multiply your productivity.</li>
+              <li>Help you grow faster — with fewer hands.</li>
+            </ul>
+          </div>
+          <div class="ai-book-cta">
+            <a href="10-AI-Tools-Boost-Business-ArtR.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary ai-book-btn">
+              <span class="btn-text">Get the Book Now</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="btn-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="ai-book-right">
+          <div class="ai-book-visual">
+            <div class="book-cover">
+              <div class="book-spine"></div>
+              <div class="book-pages">
+                <div class="page page-1"></div>
+                <div class="page page-2"></div>
+                <div class="page page-3"></div>
+              </div>
+              <div class="book-title">
+                <span class="book-title-main">10 AI Tools That Will Boost Your</span>
+                <span class="book-title-sub">Business</span>
+              </div>
+              <div class="ai-sparkles">
+                <div class="sparkle sparkle-1">✨</div>
+                <div class="sparkle sparkle-2">🚀</div>
+                <div class="sparkle sparkle-3">⚡</div>
+                <div class="sparkle sparkle-4">🎯</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <div class="container">
@@ -1154,7 +1206,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="chat-icon">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
       </svg>
-      <span class="chat-notification" id="chatNotification" style="display: none;">1</span>
+      <span class="chat-notification" id="chatNotification">1</span>
     </button>
 
     <!-- Chat Modal -->
@@ -1569,6 +1621,9 @@
           if (e.key === 'Enter') this.sendMessage();
         });
 
+        // Show initial notification for the welcome message
+        this.showNotification(1);
+
         // Close on outside click
         document.addEventListener('click', (e) => {
           if (!this.modal.contains(e.target) && !this.toggle.contains(e.target) && this.isOpen) {
@@ -1588,13 +1643,22 @@
       openChat() {
         this.isOpen = true;
         this.modal.classList.add('open');
-        this.notification.style.display = 'none';
+        this.hideNotification();
         this.input.focus();
       }
 
       closeChat() {
         this.isOpen = false;
         this.modal.classList.remove('open');
+      }
+
+      showNotification(count = 1) {
+        this.notification.textContent = count;
+        this.notification.style.display = 'block';
+      }
+
+      hideNotification() {
+        this.notification.style.display = 'none';
       }
 
       async sendMessage() {
@@ -1647,6 +1711,11 @@
           if (assistantMessage && assistantMessage.content && assistantMessage.content[0] && assistantMessage.content[0].text) {
             console.log('📝 Assistant message content:', assistantMessage.content[0].text.value);
             this.addMessage(assistantMessage.content[0].text.value, 'bot');
+            
+            // Show notification if chat is closed
+            if (!this.isOpen) {
+              this.showNotification(1);
+            }
           } else {
             console.error('❌ No assistant message found or invalid structure:', assistantMessage);
             this.addMessage('Sorry, I received an invalid response format. Please try again.', 'bot');
