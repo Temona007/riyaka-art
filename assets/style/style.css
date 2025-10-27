@@ -2751,6 +2751,131 @@ span.top-badge {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 
+/* Social Media Icons */
+.social-links {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-link:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-link:hover::before {
+  left: 100%;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+
+/* Individual platform brand colors */
+.social-link[aria-label="LinkedIn"] {
+  background: #0077b5;
+}
+
+.social-link[aria-label="LinkedIn"]:hover {
+  background: #005885;
+  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+}
+
+.social-link[aria-label="YouTube"] {
+  background: #ff0000;
+}
+
+.social-link[aria-label="YouTube"]:hover {
+  background: #cc0000;
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+.social-link[aria-label="Email"] {
+  background: #ea4335;
+}
+
+.social-link[aria-label="Email"]:hover {
+  background: #d33b2c;
+  box-shadow: 0 6px 20px rgba(234, 67, 53, 0.4);
+}
+
+.social-link[aria-label="GitHub"] {
+  background: #333;
+}
+
+.social-link[aria-label="GitHub"]:hover {
+  background: #1a1a1a;
+  box-shadow: 0 6px 20px rgba(51, 51, 51, 0.4);
+}
+
+
+.social-link[aria-label="Instagram"] {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-link[aria-label="Instagram"]:hover {
+  background: linear-gradient(45deg, #e6852e 0%, #d55a2f 25%, #c91e36 50%, #b91c5a 75%, #a5167a 100%);
+  box-shadow: 0 6px 20px rgba(188, 24, 136, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .social-links {
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+  }
+  
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .social-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /* AI Book Section */
 .ai-book {
   padding: var(--space-20) 0;
