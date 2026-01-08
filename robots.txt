@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://artr.dev/sitemap.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
