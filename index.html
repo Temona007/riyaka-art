@@ -847,7 +847,7 @@
             <div class="client-header">
               <div class="client-image">
                  <a href="https://www.thewadinglist.com/" target="_blank" rel="noopener noreferrer" aria-label="Leonard Friedrich website">
-                   <img src="assets/images/Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo" loading="lazy">
+                   <img src="https://www.thewadinglist.com/wp-content/uploads/2020/05/Leo-Patagonia-Fly-Fishing.jpeg" alt="Leonard Friedrich" class="client-photo" loading="lazy">
                  </a>
               </div>
               <div class="client-info">
@@ -882,7 +882,7 @@
             <div class="client-header">
               <div class="client-image">
                  <a href="https://nature-nomad.world/" target="_blank" rel="noopener noreferrer" aria-label="David Bossek website">
-                   <img src="assets/images/David.png" alt="David Bossek" class="client-photo" loading="lazy">
+                   <img src="https://nature-nomad.world/wp-content/uploads/2024/05/Design-ohne-Titel-4.png" alt="David Bossek" class="client-photo" loading="lazy">
                  </a>
               </div>
               <div class="client-info">
@@ -917,7 +917,7 @@
             <div class="client-header">
               <div class="client-image">
                  <a href="https://www.shannonjaydougherty.com/" target="_blank" rel="noopener noreferrer" aria-label="Shannon Dougherty website">
-                   <img src="assets/images/Shanon.png" alt="Shannon Dougherty" class="client-photo" loading="lazy">
+                   <img src="https://images.squarespace-cdn.com/content/v1/67058958232bf02592c0bccc/03c837f1-e565-4587-8aba-49a12032be41/Track+suit+Sandwich_Shannon+Jay+Dougherty.jpg?format=1000w" alt="Shannon Dougherty" class="client-photo" loading="lazy">
                  </a>
               </div>
               <div class="client-info">
@@ -1011,11 +1011,6 @@
               </a>
             </div>
             <div class="logo-item">
-              <a href="https://madcotransportation.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo" loading="lazy">
-              </a>
-            </div>
-            <div class="logo-item">
               <a href="https://altanewyork.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
                 <img src="https://media-production.lp-cdn.com/media/552857c8-fc82-4b66-92ad-bc85e7178c2b" alt="Alta NYC" class="company-logo" loading="lazy">
               </a>
@@ -1048,11 +1043,6 @@
             <div class="logo-item">
               <a href="https://www.traderscale.com" target="_blank" rel="noopener noreferrer" class="logo-link">
                 <img src="https://www.traderscale.com/wp-content/uploads/2025/02/logo.svg" alt="TraderScale" class="company-logo" loading="lazy">
-              </a>
-            </div>
-            <div class="logo-item">
-              <a href="https://madcotransportation.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="https://madcotransportation.com/wp-content/uploads/2019/09/mct-footer-logo.png" alt="Madco Transportation" class="company-logo" loading="lazy">
               </a>
             </div>
             <div class="logo-item">
@@ -1147,6 +1137,17 @@
         </div>
         
         <div class="blog-grid">
+          <a class="blog-card blog-card-link" href="blog/ai-video-sora-marketing.html" aria-label="Read: How Businesses Can Use AI Video (Sora) for Marketing">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="blog-category">AI & Marketing</span>
+                <span class="blog-date">February 2025</span>
+              </div>
+              <h3 class="blog-title">How Businesses Can Use AI Video (Sora) for Marketing</h3>
+              <p class="blog-excerpt">Transform your marketing content creation with AI video generation — from product demos to social media, create professional videos in minutes instead of weeks.</p>
+            </div>
+          </a>
+
           <a class="blog-card blog-card-link" href="blog/ai-chatbots-customer-support.html" aria-label="Read: The Future of Customer Support: AI Chatbots That Actually Help">
             <div class="blog-content">
               <div class="blog-meta">
@@ -1387,7 +1388,7 @@
     <div class="chatbot-modal" id="chatbotModal">
       <div class="chatbot-header">
         <div class="chatbot-avatar">
-          <img src="assets/images/small-riyaka.png" alt="Art R." class="chatbot-avatar-img">
+          <img src="assets/images/riyaka-2026-green.jpg" alt="Art R." class="chatbot-avatar-img">
         </div>
         <div class="chatbot-info">
           <h3>Art R.</h3>
@@ -1403,7 +1404,7 @@
       <div class="chatbot-messages" id="chatbotMessages">
         <div class="message bot-message">
           <div class="message-avatar">
-            <img src="assets/images/small-riyaka.png" alt="Art R." class="message-avatar-img">
+            <img src="assets/images/riyaka-2026-green.jpg" alt="Art R." class="message-avatar-img">
           </div>
           <div class="message-content">
             <p>Hey, how can I help you?</p>
@@ -1977,12 +1978,59 @@
         console.log(`📡 Netlify function response status: ${response.status}`);
 
         if (!response.ok) {
-          const errorData = await response.json();
-          console.error('❌ Netlify function error:', errorData);
-          throw new Error(errorData.error || 'Failed to call Netlify function');
+          // Check if response is JSON before parsing
+          const contentType = response.headers.get('content-type');
+          let errorMessage = `Failed to call Netlify function (${response.status})`;
+          
+          if (contentType && contentType.includes('application/json')) {
+            try {
+              const errorData = await response.json();
+              errorMessage = errorData.error || errorMessage;
+              console.error('❌ Netlify function error:', errorData);
+            } catch (e) {
+              console.error('❌ Failed to parse error response as JSON:', e);
+            }
+          } else {
+            // Response is likely HTML (error page)
+            const errorText = await response.text();
+            console.error('❌ Netlify function returned non-JSON response:', errorText.substring(0, 200));
+            if (response.status === 404) {
+              errorMessage = 'Chatbot service is not available. Please contact Art directly at temonaupw@gmail.com';
+            } else if (response.status === 501) {
+              errorMessage = 'Chatbot function is not deployed or configured. Please contact Art at temonaupw@gmail.com';
+            } else {
+              errorMessage = `Chatbot service error (${response.status}). Please try again later or contact Art at temonaupw@gmail.com`;
+            }
+          }
+          
+          throw new Error(errorMessage);
         }
 
-        const result = await response.json();
+        // Try to parse as JSON, but handle HTML responses gracefully
+        let result;
+        try {
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            result = await response.json();
+          } else {
+            // Response might be HTML even with 200 status
+            const text = await response.text();
+            // Check if it looks like HTML
+            if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+              console.error('❌ Received HTML instead of JSON:', text.substring(0, 200));
+              throw new Error('Chatbot service returned an invalid response. Please try again later or contact Art at temonaupw@gmail.com');
+            }
+            // Try to parse as JSON anyway
+            result = JSON.parse(text);
+          }
+        } catch (parseError) {
+          console.error('❌ Failed to parse response:', parseError);
+          if (parseError.message.includes('JSON')) {
+            throw new Error('Chatbot service is not available. Please contact Art directly at temonaupw@gmail.com');
+          }
+          throw parseError;
+        }
+        
         console.log(`✅ Netlify function success:`, result);
         return result;
       }
@@ -2029,7 +2077,7 @@
         avatar.className = 'message-avatar';
         
         if (sender === 'bot') {
-          avatar.innerHTML = `<img src="assets/images/small-riyaka.png" alt="Art R." class="message-avatar-img">`;
+          avatar.innerHTML = `<img src="assets/images/riyaka-2026-green.jpg" alt="Art R." class="message-avatar-img">`;
         } else {
           avatar.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
