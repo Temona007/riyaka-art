@@ -3212,6 +3212,20 @@ span.top-badge {
   font-weight: 600;
 }
 
+.article-text h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.article-text h2:first-of-type {
+  margin-top: 2rem;
+}
+
+.article-text h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .highlight-box {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border: 1px solid #0ea5e9;
