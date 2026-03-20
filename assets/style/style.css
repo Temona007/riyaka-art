@@ -1932,6 +1932,14 @@ span.top-badge {
   font-size: var(--font-size-lg);
 }
 
+.footer-section h4 a {
+  color: inherit;
+}
+
+.footer-section h4 a:hover {
+  color: var(--primary);
+}
+
 .footer-section ul {
   list-style: none;
 }
