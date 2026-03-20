@@ -3253,6 +3253,37 @@ span.top-badge {
   font-weight: 500;
 }
 
+.tool-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 32px 0;
+}
+
+.tool-card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.tool-card h2 a {
+  color: #0c4a6e;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.tool-card h2 a:hover {
+  color: var(--primary, #14a800);
+}
+
+.tool-card p {
+  margin-bottom: 16px;
+}
+
+.tool-card .btn {
+  margin-top: 8px;
+}
+
 .example-box {
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   border: 1px solid #f59e0b;
