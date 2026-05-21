@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building an MVP Fast: How AI Accelerates SaaS Development | Art R.</title>
-    <meta name="description" content="Learn how AI accelerates MVP development for SaaS: faster ideation, rapid prototyping, smart features, and data-driven refinement to validate faster and launch smarter.">
-    <meta name="keywords" content="AI MVP, SaaS development, AI prototyping, GitHub Copilot, OpenAI, LangChain, rapid MVP, AI product development">
+    <title>How to Add AI Video Generation to Your Web App | Art R.</title>
+    <meta name="description" content="Learn how to integrate AI video generation into your web application. Complete guide covering backend architecture, queue systems, storage, billing, and technical implementation.">
+    <meta name="keywords" content="AI video generation, web app development, SaaS integration, AI video API, video generation API, Next.js, Node.js, AI video integration, SaaS features">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Art R.">
-    <link rel="canonical" href="https://riyaka.art/blog/ai-mvp-fast.html">
-
+    <link rel="canonical" href="https://riyaka.art/blog/ai-video-generation-web-app.html">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/riyaka-logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/riyaka-logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/riyaka-logo.png">
     <link rel="shortcut icon" href="../assets/images/riyaka-logo.png">
-
+    
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/style/style.css">
-
+    
     <!-- Open Graph -->
-    <meta property="og:title" content="Building an MVP Fast: How AI Accelerates SaaS Development">
-    <meta property="og:description" content="How AI speeds up MVP development: ideation, prototyping, smart features, and data-driven iteration.">
+    <meta property="og:title" content="How to Add AI Video Generation to Your Web App">
+    <meta property="og:description" content="Complete technical guide to integrating AI video generation into web applications. Learn backend architecture, queue systems, storage, billing, and implementation strategies.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://riyaka.art/blog/ai-mvp-fast.html">
+    <meta property="og:url" content="https://riyaka.art/blog/ai-video-generation-web-app.html">
     <meta property="og:image" content="https://riyaka.art/assets/images/riyaka-logo.png">
     <meta property="og:site_name" content="Art R. Development">
-    <meta property="article:published_time" content="2025-10-04T09:00:00+00:00">
+    <meta property="article:published_time" content="2025-02-17T10:00:00+00:00">
     <meta property="article:author" content="https://riyaka.art/">
-
+    <meta property="article:tag" content="AI Video">
+    <meta property="article:tag" content="Web Development">
+    <meta property="article:tag" content="SaaS">
+    
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building an MVP Fast: How AI Accelerates SaaS Development">
-    <meta name="twitter:description" content="How AI speeds up MVP development: ideation, prototyping, smart features, and data-driven iteration.">
+    <meta name="twitter:title" content="How to Add AI Video Generation to Your Web App">
+    <meta name="twitter:description" content="Complete technical guide to integrating AI video generation into web applications. Learn backend architecture, queue systems, storage, billing, and implementation strategies.">
     <meta name="twitter:image" content="https://riyaka.art/assets/images/riyaka-logo.png">
     <meta name="twitter:site" content="@riyaka_">
 
@@ -41,8 +44,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Building an MVP Fast: How AI Accelerates SaaS Development",
-      "description": "Learn how AI accelerates MVP development for SaaS: faster ideation, rapid prototyping, smart features, and data-driven refinement.",
+      "headline": "How to Add AI Video Generation to Your Web App",
+      "description": "Learn how to integrate AI video generation into your web application. Complete guide covering backend architecture, queue systems, storage, billing, and technical implementation.",
       "author": {
         "@type": "Person",
         "name": "Art R.",
@@ -51,12 +54,20 @@
       "publisher": {
         "@type": "Organization",
         "name": "Art R. Development",
-        "logo": {"@type": "ImageObject", "url": "https://riyaka.art/assets/images/riyaka-logo.png"}
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://riyaka.art/assets/images/riyaka-logo.png"
+        }
       },
-      "image": ["https://riyaka.art/assets/images/riyaka-logo.png"],
-      "datePublished": "2025-10-04T09:00:00+00:00",
-      "dateModified": "2025-10-04T09:00:00+00:00",
-      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://riyaka.art/blog/ai-mvp-fast.html"}
+      "image": [
+        "https://riyaka.art/assets/images/riyaka-logo.png"
+      ],
+      "datePublished": "2025-02-17T10:00:00+00:00",
+      "dateModified": "2025-02-17T10:00:00+00:00",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://riyaka.art/blog/ai-video-generation-web-app.html"
+      }
     }
     </script>
 </head>
@@ -71,6 +82,7 @@
                 <span class="brand-name">Art R.</span>
             </a>
             <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#about" aria-label="Learn more about Art R.">About</a></li>
                 <li><a href="../index.html#services" aria-label="View services">Services</a></li>
                 <li><a href="../index.html#portfolio" aria-label="View portfolio">Portfolio</a></li>
                 <li><a href="../index.html#testimonials" aria-label="Read testimonials">Testimonials</a></li>
@@ -87,11 +99,11 @@
     <section class="article-header">
         <div class="container">
             <div class="article-meta">
-                <span class="article-category">AI & SaaS</span>
-                <span class="article-date">October 2025</span>
+                <span class="article-category">AI & Web Development</span>
+                <span class="article-date">February 2025</span>
             </div>
-            <h1 class="article-title">Building an MVP Fast: How AI Accelerates SaaS Development</h1>
-            <p class="article-subtitle">Validate faster, build cheaper, and launch smarter with AI</p>
+            <h1 class="article-title">How to Add AI Video Generation to Your Web App</h1>
+            <p class="article-subtitle">Complete technical guide to integrating AI video generation into web applications — from backend architecture to billing systems</p>
             <div class="article-author">
                 <img src="../assets/images/riyaka-2026-green.jpg" alt="Art R." class="author-avatar">
                 <div class="author-info">
@@ -109,47 +121,256 @@
                 <div class="article-image">
                     <div class="article-placeholder">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                         </svg>
                     </div>
                 </div>
 
                 <div class="article-text">
-                    <p class="lead">Every successful SaaS product starts as an MVP — a Minimum Viable Product that validates an idea before scaling.</p>
-                    <p>But what used to take months to prototype can now be built in weeks (or even days) — thanks to AI.</p>
-                    <p>As a developer, I’ve seen how integrating AI into the development process doesn’t just make the product smarter — it speeds up every step of creation.</p>
+                    <p class="lead">AI video generation is no longer experimental — it's becoming a competitive advantage for modern SaaS products.</p>
+                    
+                    <p>Whether you're building a marketing platform, real estate tool, education app, or creative SaaS, adding AI video capabilities can dramatically increase product value and user engagement.</p>
+
+                    <p>In this guide, I'll break down exactly how to integrate AI video generation into a web application from a technical and product perspective.</p>
+
+                    <h2>Why Add AI Video to Your Product?</h2>
+
+                    <p>AI video generation enables users to:</p>
+
+                    <ul>
+                        <li>Create promotional videos from text prompts</li>
+                        <li>Generate visual demos of products</li>
+                        <li>Produce social media content automatically</li>
+                        <li>Build marketing assets without video editors</li>
+                    </ul>
+
+                    <p>For SaaS platforms, this creates:</p>
+
+                    <ul>
+                        <li><strong>Higher user retention</strong></li>
+                        <li><strong>Premium subscription tiers</strong></li>
+                        <li><strong>Strong product differentiation</strong></li>
+                    </ul>
+
+                    <h2>Step 1: Choose the Right AI Video Model</h2>
+
+                    <p>Depending on your needs, you can integrate:</p>
+
+                    <ul>
+                        <li>Text-to-video models</li>
+                        <li>Image-to-video models</li>
+                        <li>Script-to-video pipelines</li>
+                        <li>Avatar-based video generation</li>
+                    </ul>
 
                     <div class="highlight-box">
-                        <h3>💡 Here’s how AI accelerates MVP development:</h3>
-                    </div>
-
-                    <h3>1. Faster Ideation and Validation</h3>
-                    <p>Instead of endless brainstorming, founders now use AI to generate feature ideas, write UX copy, and even outline database structures. ChatGPT and similar models can analyze your market concept and suggest feature priorities or business models — in minutes.</p>
-
-                    <h3>2. Rapid Prototyping with AI Code Generation</h3>
-                    <p>Tools like GitHub Copilot or OpenAI’s function calling reduce development time dramatically. They write boilerplate code, APIs, and data handlers — freeing developers to focus on product logic and experience.</p>
-
-                    <h3>3. Smart MVP Features Out of the Box</h3>
-                    <p>With APIs like LangChain and OpenAI, you can integrate chat, search, summarization, and analytics into your MVP from day one. That means early users test a version that already feels intelligent, increasing engagement and feedback quality.</p>
-
-                    <h3>4. Data-Driven Refinement</h3>
-                    <p>AI analytics tools help founders understand user behavior faster — enabling quick iterations and data-backed improvements.</p>
-
-                    <div class="highlight-box">
-                        <h3>⚡ Why this matters:</h3>
-                        <ul class="benefits-list">
-                            <li>Validate faster</li>
-                            <li>Build cheaper</li>
-                            <li>Launch smarter</li>
+                        <h3>💡 Key considerations:</h3>
+                        <ul>
+                            <li>API availability</li>
+                            <li>Cost per generation</li>
+                            <li>Output quality</li>
+                            <li>Rendering time</li>
+                            <li>Commercial usage rights</li>
                         </ul>
                     </div>
 
-                    <p>The “prototype → traction → funding” loop used to take a year. Now, it can happen in 2–3 months — if you build with AI from day one.</p>
-                    <p><strong>That’s why in 2025, the best SaaS founders won’t just be coders — they’ll be AI-enabled creators.</strong></p>
+                    <h2>Step 2: Design the User Flow</h2>
+
+                    <p>AI video generation requires a clear UX. Typical flow:</p>
+
+                    <ol>
+                        <li>User enters prompt (text/script)</li>
+                        <li>Selects style, duration, format</li>
+                        <li>Submits generation request</li>
+                        <li>Backend queues job</li>
+                        <li>Processing status updates</li>
+                        <li>Video delivered to dashboard</li>
+                        <li>Download or share option</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <h3>⚠️ Important:</h3>
+                        <p>Video generation is not instant. You need proper async handling.</p>
+                    </div>
+
+                    <h2>Step 3: Backend Architecture</h2>
+
+                    <p>Because AI video generation is resource-intensive, you should use:</p>
+
+                    <div class="highlight-box">
+                        <h3>📋 Recommended Architecture:</h3>
+                        <ul>
+                            <li><strong>Next.js / React</strong> frontend</li>
+                            <li><strong>Node.js</strong> or serverless backend</li>
+                            <li><strong>Queue system</strong> (Redis, BullMQ, or cloud task queue)</li>
+                            <li><strong>Cloud storage</strong> (S3 or equivalent)</li>
+                            <li><strong>Database</strong> (Supabase, PostgreSQL, etc.)</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Workflow:</strong></p>
+
+                    <ol>
+                        <li>Store prompt in DB</li>
+                        <li>Send generation request to AI API</li>
+                        <li>Track job ID</li>
+                        <li>Poll for completion</li>
+                        <li>Save final video URL</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <h3>⚠️ Critical:</h3>
+                        <p>Never process large video generation directly in frontend.</p>
+                    </div>
+
+                    <h2>Step 4: Queue & Processing System</h2>
+
+                    <p>Video generation can take:</p>
+
+                    <ul>
+                        <li>30 seconds</li>
+                        <li>2–5 minutes</li>
+                        <li>Longer for complex outputs</li>
+                    </ul>
+
+                    <p><strong>Implement:</strong></p>
+
+                    <ul>
+                        <li>Background worker</li>
+                        <li>Job queue</li>
+                        <li>Status tracking (pending / processing / complete / failed)</li>
+                    </ul>
+
+                    <p>This prevents server overload and improves reliability.</p>
+
+                    <h2>Step 5: Storage & Delivery</h2>
+
+                    <p>Generated videos must be:</p>
+
+                    <ul>
+                        <li>Stored securely</li>
+                        <li>Optimized (compressed)</li>
+                        <li>Delivered via CDN</li>
+                    </ul>
+
+                    <p>You may also:</p>
+
+                    <ul>
+                        <li>Add expiration rules</li>
+                        <li>Offer download limits</li>
+                        <li>Provide watermarking for free plans</li>
+                    </ul>
+
+                    <h2>Step 6: Billing & Credits System</h2>
+
+                    <p>AI video is expensive. You need:</p>
+
+                    <ul>
+                        <li>Stripe integration</li>
+                        <li>Credit-based system</li>
+                        <li>Plan-based limits</li>
+                        <li>Usage tracking</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h3>💰 Example model:</h3>
+                        <ul>
+                            <li><strong>Starter:</strong> 5 videos/month</li>
+                            <li><strong>Pro:</strong> 30 videos/month</li>
+                            <li><strong>Enterprise:</strong> Custom limits</li>
+                        </ul>
+                        <p>This protects your margins.</p>
+                    </div>
+
+                    <h2>Step 7: Safety & Moderation</h2>
+
+                    <p>Because AI video can generate unpredictable content, add:</p>
+
+                    <ul>
+                        <li>Prompt filtering</li>
+                        <li>Content moderation API</li>
+                        <li>Terms of service enforcement</li>
+                        <li>Logging for review</li>
+                    </ul>
+
+                    <p>This protects your product legally.</p>
+
+                    <h2>Step 8: Performance Optimization</h2>
+
+                    <p>AI video apps need:</p>
+
+                    <ul>
+                        <li>Caching</li>
+                        <li>Rate limiting</li>
+                        <li>Queue throttling</li>
+                        <li>Cost monitoring</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h3>⚠️ Warning:</h3>
+                        <p>Without optimization, API bills can escalate quickly.</p>
+                    </div>
+
+                    <h2>Bonus: Advanced Features</h2>
+
+                    <p>To make your product premium:</p>
+
+                    <ul>
+                        <li>Template-based prompts</li>
+                        <li>Scene customization</li>
+                        <li>Voiceover generation</li>
+                        <li>Auto-captioning</li>
+                        <li>Multi-language output</li>
+                        <li>Brand kit integration</li>
+                    </ul>
+
+                    <h2>Real-World Use Cases</h2>
+
+                    <p>AI video generation can be integrated into:</p>
+
+                    <ul>
+                        <li>SaaS onboarding tools</li>
+                        <li>Real estate marketing platforms</li>
+                        <li>E-learning systems</li>
+                        <li>Social media schedulers</li>
+                        <li>AI marketing automation platforms</li>
+                    </ul>
+
+                    <h2>Technical Stack Example</h2>
+
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Frontend:</strong> Next.js 14 + TypeScript</li>
+                            <li><strong>Backend:</strong> Node.js API routes</li>
+                            <li><strong>Database:</strong> Supabase</li>
+                            <li><strong>Queue:</strong> Redis + BullMQ</li>
+                            <li><strong>Storage:</strong> AWS S3</li>
+                            <li><strong>Payments:</strong> Stripe</li>
+                            <li><strong>AI API:</strong> Video generation provider</li>
+                        </ul>
+                    </div>
+
+                    <h2>Final Thoughts</h2>
+
+                    <p>Adding AI video generation to your web app is not just about connecting an API — it requires:</p>
+
+                    <ul>
+                        <li>Scalable architecture</li>
+                        <li>Cost control</li>
+                        <li>User experience design</li>
+                        <li>Secure processing</li>
+                        <li>Monetization strategy</li>
+                    </ul>
+
+                    <p>When implemented correctly, AI video becomes a powerful feature that increases engagement, retention, and revenue.</p>
+
+                    <blockquote>
+                        <p>If you're building a SaaS product and want to integrate AI video generation properly — from backend to billing — I can help architect and build the system end-to-end.</p>
+                    </blockquote>
 
                     <div class="cta-section">
-                        <h3>Ready to build your MVP with AI?</h3>
-                        <p style="color: #ffffff;">Let’s validate and ship your SaaS idea fast with an AI-enabled stack.</p>
+                        <h3>Let's Build Something Powerful</h3>
+                        <p>Ready to add AI video generation to your web app? Get in touch to discuss your specific needs and see how we can build a scalable, cost-effective solution that drives user engagement and revenue.</p>
                         <div class="cta-buttons">
                             <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
                             <a href="mailto:temonaupw@gmail.com" class="btn btn-secondary">Email Me</a>
@@ -224,7 +445,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.25 4.5a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06L13.69 12 8.25 6.56a.75.75 0 010-1.06z"/></svg>
               </button>
               <div class="related-slider">
-                <div class="related-track">
+                <div class="related-track" id="relatedTrack">
                 <a href="ai-chatbots-customer-support.html" class="related-card">
                   <div class="related-content">
                     <h4>The Future of Customer Support</h4>
@@ -259,6 +480,18 @@
                   <div class="related-content">
                     <h4>Enhance Client Experience</h4>
                     <p>Speed, clarity, personalization</p>
+                  </div>
+                </a>
+                <a href="ai-video-sora-marketing.html" class="related-card">
+                  <div class="related-content">
+                    <h4>AI Video for Marketing</h4>
+                    <p>How Businesses Use Sora</p>
+                  </div>
+                </a>
+                <a href="ai-video-generation-web-app.html" class="related-card">
+                  <div class="related-content">
+                    <h4>Add AI Video to Web App</h4>
+                    <p>Complete integration guide</p>
                   </div>
                 </a>
                 </div>
@@ -318,7 +551,7 @@
                         </a>
                         <a href="https://www.instagram.com/riyaka_/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
                     </div>
@@ -352,13 +585,17 @@
 
     <!-- Scripts -->
     <script>
+        // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
+
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const isExpanded = navLinks.classList.contains('active');
             mobileToggle.setAttribute('aria-expanded', isExpanded);
         });
+
+        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -368,5 +605,3 @@
     </script>
 </body>
 </html>
-
-
