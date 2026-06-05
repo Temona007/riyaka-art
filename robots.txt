@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://artr.dev/sitemap.xml
+Sitemap: https://riyakadev.com/sitemap.xml
 
 
 

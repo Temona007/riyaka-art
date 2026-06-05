@@ -5,6 +5,48 @@
 [build.environment]
   NODE_VERSION = "18"
 
+[[redirects]]
+  from = "https://riyaka.art/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://riyaka.art/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.riyaka.art/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.riyaka.art/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://riyakadev.com/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.riyakadev.com/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.riyakadev.com/*"
+  to = "https://riyakadev.com/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/.netlify/functions/*"
   [headers.values]
