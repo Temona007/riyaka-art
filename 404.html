@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JZ1JMRWPX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0JZ1JMRWPX');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Art R.</title>
+  <meta name="description" content="The page you are looking for could not be found. Return to Art R. homepage, blog, or contact page.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#14a800" class="brand-logo" width="28" height="28" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+        </svg>
+        <span class="brand-name">Art R.</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/index.html#services" aria-label="View services">Services</a></li>
+        <li><a href="/index.html#portfolio" aria-label="View portfolio">Portfolio</a></li>
+        <li><a href="/index.html#testimonials" aria-label="Read testimonials">Testimonials</a></li>
+        <li><a href="/blog/" aria-label="Read blog articles">Blog</a></li>
+        <li><a href="/index.html#contact" aria-label="Contact Art R.">Contact</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="material-icons">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="article-header error-page">
+      <div class="container">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1 class="article-title">Page Not Found</h1>
+        <p class="article-subtitle">Sorry, the page or URL you're looking for doesn't exist or may have been moved.</p>
+        <div class="error-actions">
+          <a href="/index.html" class="btn btn-primary">Back to Homepage</a>
+          <a href="/blog/" class="btn btn-secondary">Browse Blog</a>
+        </div>
+        <nav class="error-links" aria-label="Helpful links">
+          <a href="/index.html#services">Services</a>
+          <a href="/index.html#portfolio">Portfolio</a>
+          <a href="/index.html#contact">Contact</a>
+          <a href="/tools/">Tools</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Art R. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const isExpanded = navLinks.classList.contains('active');
+      mobileToggle.setAttribute('aria-expanded', isExpanded);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

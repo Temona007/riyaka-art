@@ -4003,3 +4003,56 @@ span.top-badge {
     height: 16px;
   }
 }
+
+/* 404 Page */
+.error-page .error-code {
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 0 1rem;
+  background: linear-gradient(135deg, #14a800, #0f8a00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.error-page .article-subtitle {
+  margin-bottom: 2rem;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.error-links a {
+  color: #64748b;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.error-links a:hover {
+  color: #14a800;
+}
+
+@media (max-width: 768px) {
+  .error-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error-actions .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
