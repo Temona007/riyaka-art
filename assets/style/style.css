@@ -257,12 +257,12 @@ p {
   background-clip: text;
 }
 
-.title {
+.hero-title {
   display: block;
   font-size: var(--font-size-2xl);
   color: var(--text-light);
   font-weight: 500;
-  margin-bottom: var(--space-6);
+  margin: 0 0 var(--space-6);
 }
 
 .hero-description {

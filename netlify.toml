@@ -47,6 +47,25 @@
   status = 301
   force = true
 
+# Canonical index URLs (avoid duplicate /index.html vs /)
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/index.html"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/index.html"
+  to = "/tools/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/.netlify/functions/*"
   [headers.values]
