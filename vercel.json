@@ -1,19 +1,35 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
       "source": "/index.html",
-      "destination": "/",
-      "permanent": true
+      "destination": "https://riyakadev.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.php",
+      "destination": "https://riyakadev.com/",
+      "statusCode": 301
     },
     {
       "source": "/blog/index.html",
-      "destination": "/blog/",
-      "permanent": true
+      "destination": "https://riyakadev.com/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index.php",
+      "destination": "https://riyakadev.com/blog/",
+      "statusCode": 301
     },
     {
       "source": "/tools/index.html",
-      "destination": "/tools/",
-      "permanent": true
+      "destination": "https://riyakadev.com/tools/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tools/index.php",
+      "destination": "https://riyakadev.com/tools/",
+      "statusCode": 301
     }
   ]
 }
